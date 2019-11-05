@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Fooderia';
+toggle() {
+  document.getElementById('menu').classList.toggle('active');
+}
 }

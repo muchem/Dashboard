@@ -5,3 +5,19 @@
   
     }
 }
+.info-box{
+    padding:15px 5px;
+    border:rgb(236, 236, 236) solid 1px;
+    margin-bottom:15px;
+    background-color:white;
+      box-shadow: 2px 2px 9px 0px #dadada;
+}
+.recipe-box{
+        width: 100%;
+        transition:0.3s;
+    &:hover{
+            transform:scale(1.1);
+            cursor: pointer;
+            z-index: 2;
+    }
+}

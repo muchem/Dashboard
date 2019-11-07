@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { FavortiesComponent } from './Components/favorties/favorties.component';
 import { RecipeCardComponent } from './Components/recipe-card/recipe-card.component';
+import { RecipeResultsComponent } from './Components/recipe-results/recipe-results.component';
+import { RecipeDetailsComponent } from './Components/recipe-details/recipe-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FavortiesComponent,
-    RecipeCardComponent
+    RecipeCardComponent,
+    RecipeResultsComponent,
+    RecipeDetailsComponent
   ],
   imports: [
     BrowserModule,

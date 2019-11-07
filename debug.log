@@ -1,0 +1,4 @@
+[1105/143357.782:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1105/143357.790:ERROR:exception_snapshot_win.cc(98)] thread ID 11860 not found in process
+[1105/143359.574:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\melan\AppData\Local\Google\Chrome\User Data\Crashpad\reports\02b080f9-8ff5-4df0-b489-04aedf77b30f.dmp: The process cannot access the file because it is being used by another process. (0x20)
+[1106/191154.179:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name metrics_client_id, discarding value 89de5502feec45b1bdeb7faaba74e478

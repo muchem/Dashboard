@@ -23,11 +23,12 @@ header{
     display:flex;
 }
 .active-route{
-    background-color:#fd771e;
-    color:#f2f2f2;
+        background-color:#fd771e;
+        color:#f2f2f2;
 }
 #side-nav{
     display:none;
+    width:35px;
 }
 .other{
     padding-left:10px;
@@ -40,7 +41,7 @@ header{
     width:275px;
     margin:auto;
     position: fixed;
-    top:11%;
+    margin-top:70px;
      z-index:1;
 }
 .menu-img-box{
@@ -98,8 +99,9 @@ footer{
 }
 @media screen and (max-width:768px){
        #search-Box {
-           width: 38vh;
+           width: 35vh;
        }
+ 
 }
 @media screen and (max-width:576px){
         .logo{
@@ -108,6 +110,7 @@ footer{
         }
         .menu {
             display: none;
+            margin-top:62px;
         }
 
         .other {
@@ -126,7 +129,7 @@ footer{
             padding: 15px 0px;
         }
         #search-Box {
-            width: 35vh;
+            width: 30vh;
         }
         .active {
             display: block;

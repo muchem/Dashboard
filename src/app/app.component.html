@@ -7,15 +7,15 @@
   </div>
   <div class="other">
     <div>
-      <img src="https://www.stickpng.com/assets/images/588a64f5d06f6719692a2d13.png" width="35px" id="side-nav"
+      <img src="https://www.stickpng.com/assets/images/588a64f5d06f6719692a2d13.png"id="side-nav"
         (click)="toggle()">
     </div>
     <div>
-      <input placeholder="Search Receipes..." style="height: 20px;" id="search-Box"><button
-        id="search-bnt">Search</button>
+      <input placeholder="Search Receipes..." style="height: 20px;" id="search-Box"[(ngModel)] = "value"><button
+        id="search-bnt"routerLink = '/recipe-results/{{value}}'>Search</button>
     </div>
   </div>
-</header>
+</header> 
 <div class="container-fluid" style="padding:0">
   <main class="main">
     <div class="menu" id="menu">
@@ -23,8 +23,8 @@
         <img src="https://assets3.thrillist.com/v1/image/2797371/size/tmg-article_default_mobile.jpg">
       </div>
       <ul class="link-box">
-        <a href="#"routerLink = "/">
-          <li routerLinkActive='active-route'>
+        <a href="#" routerLink="/" routerLinkActive='active-route'>
+          <li>
             Home
           </li>
         </a>
@@ -37,16 +37,12 @@
         </a>
         <a href="#">
           <li>
-
             Create a Receipe
-
           </li>
         </a>
         <a href="#" routerLink='/favorites'>
           <li>
-
             Favorites
-
           </li>
         </a>
       </ul>

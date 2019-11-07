@@ -6,10 +6,11 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-recipe-details',
   templateUrl: './recipe-details.component.html',
   styleUrls: ['./recipe-details.component.scss']
-})
+}) 
 export class RecipeDetailsComponent implements OnInit {
   Id;
   selectedRecipe;
+  Ingredients;
   constructor(private Service:RecipesService,
     private route: ActivatedRoute) { }
 
@@ -18,6 +19,7 @@ export class RecipeDetailsComponent implements OnInit {
       this.Id = params.get('recipeId');
         this.Service.getSelectedRecipe(this.Id).subscribe(selected =>{
           this.selectedRecipe = selected;
+          this.Ingredients = selected.recipe.ingredients;
           console.log(this.selectedRecipe);
         })
     })

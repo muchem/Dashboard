@@ -1,4 +1,19 @@
 .left-col{
     background-color:white;
     padding:30px;
+    border:solid 1px #ececec;
+    border-radius: 15px;
+}
+#direction-link{
+   &:hover{
+       text-decoration: underline;
+       color:#df5200;
+   }
+}
+h6{
+    padding:10px 0;
+}
+img{
+       border:solid 1px #9c9c9c;
+       border-radius: 5px;
 }

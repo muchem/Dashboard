@@ -1,8 +1,20 @@
 .left-col{
     background-color:white;
-    padding:30px;
+    padding:10px;
     border:solid 1px #ececec;
     border-radius: 15px;
+}
+.right-col{
+        background-color:white;
+        padding:10px;
+        border:solid 1px #ececec;
+        border-radius: 15px;
+        margin-bottom:20px;
+        p{
+            margin:0px 5px;
+            text-align: center;
+            background-color:#e6e6e6;
+        }
 }
 #direction-link{
    &:hover{
@@ -10,10 +22,24 @@
        color:#df5200;
    }
 }
-h6{
+.header-left {
     padding:10px 0;
 }
 img{
        border:solid 1px #9c9c9c;
        border-radius: 5px;
+}
+#add-bnt{
+    color:#f2f2f2;
+    margin:5px 0px;
+    background-color:#f66c1d;
+    border:solid 1px #f66c1d;
+    border-radius: 5px;
+}
+#remove-bnt{
+     background-color:#5c5c5c;
+     margin:5px 0px;
+     border:solid 1px #474747;
+    border-radius: 5px;
+    color:#f2f2f2;
 }

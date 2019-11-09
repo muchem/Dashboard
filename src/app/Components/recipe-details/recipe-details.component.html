@@ -5,15 +5,26 @@
         <div class = "img-box">
         <img src="{{selectedRecipe.recipe.image_url}}">
         </div>
-        <h6><b>Ingredients</b></h6>
-        <ul *ngFor="let Ing of Ingredients ">
-            <li>{{Ing}}</li>
-        </ul>
-        <h6><b>Directions</b></h6>
-        <a href="{{selectedRecipe.recipe.source_url}}" target="_blank"id="direction-link">View Here</a>
+        <button *ngIf = "show" (click) = "add()"id = "add-bnt">Add to Favorites</button>
+        <button *ngIf = "hide" (click) = "remove()" id = "remove-bnt">Remove from Favorites</button>
     </div>
     <div class = "col-md-6">
-        <h1>Hello</h1>
+        <div class = "right-col">
+            <h6><b>{{selectedRecipe.recipe.publisher}}</b></h6>
+            <a href="{{selectedRecipe.recipe.publisher_url}}" target="_blank" id="direction-link">Visit Company Site</a>
+        </div>
+        <div class = "right-col">
+            <h6><b>Social Rank</b></h6>
+            <p>{{selectedRecipe.recipe.social_rank}}</p>
+        </div>
+    <div class = "right-col">
+        <h6 class="header-left"><b>Ingredients</b></h6>
+        <ul *ngFor="let Ing of Ingredients ">
+          <li>{{Ing}}</li>
+        </ul>
+        <h6 class='header-left' style="padding-bottom:0px;margin-bottom:0px;"><b>Directions</b></h6>
+        <a href="{{selectedRecipe.recipe.source_url}}" target="_blank" id="direction-link">View Here</a>
+    </div>
     </div>
     </div>
 </div>

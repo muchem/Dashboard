@@ -11,6 +11,9 @@ export class RecipeDetailsComponent implements OnInit {
   Id;
   selectedRecipe;
   Ingredients;
+  key:string = "Object";
+  show:boolean = true;
+  hide:boolean = false;
   constructor(private Service:RecipesService,
     private route: ActivatedRoute) { }
 
@@ -24,4 +27,15 @@ export class RecipeDetailsComponent implements OnInit {
         })
     })
   }
+  add(){
+    this.show = !this.show;
+    this.hide = !this.hide;
+    localStorage.setItem(this.key, JSON.stringify(this.selectedRecipe));
+  }
+  remove(){
+    this.show = !this.show;
+    this.hide = !this.hide;
+    localStorage.removeItem(this.key);
+  }
 }
+

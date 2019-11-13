@@ -11,6 +11,8 @@ export class RecipeDetailsComponent implements OnInit {
   Id;
   selectedRecipe;
   Ingredients;
+  Favorites;
+  store;
   key:string = "Object";
   show:boolean = true;
   hide:boolean = false;
@@ -23,19 +25,26 @@ export class RecipeDetailsComponent implements OnInit {
         this.Service.getSelectedRecipe(this.Id).subscribe(selected =>{
           this.selectedRecipe = selected;
           this.Ingredients = selected.recipe.ingredients;
-          console.log(this.selectedRecipe);
         })
-    })
+    }) 
+    //localStorage.setItem('Favorites', JSON.stringify(this.Favorites));
+   // this.store = JSON.parse(localStorage.getItem('Favorites'));
   }
   add(){
     this.show = !this.show;
     this.hide = !this.hide;
-    localStorage.setItem(this.key, JSON.stringify(this.selectedRecipe));
+   //this.store.push(this.selectedRecipe.recipe);
+    console.log(this.selectedRecipe.recipe);
   }
   remove(){
     this.show = !this.show;
     this.hide = !this.hide;
-    localStorage.removeItem(this.key);
   }
 }
+/* 
+Favorites.push(this.selectedRecipe);
+localStorage.setItem('Favorites', JSON.stringify(this.Favorites));
 
+//...
+var storedNames = JSON.parse(localStorage.getItem("names"));
+*/

@@ -5,7 +5,7 @@
         <div class = "img-box">
         <img src="{{selectedRecipe.recipe.image_url}}">
         </div>
-        <button *ngIf = "show" (click) = "add()"id = "add-bnt">Add to Favorites</button>
+        <button *ngIf="show" (click)="add()" id="add-bnt">Add to Favorites</button>
         <button *ngIf = "hide" (click) = "remove()" id = "remove-bnt">Remove from Favorites</button>
     </div>
     <div class = "col-md-6">

@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-favorties',
   templateUrl: './favorties.component.html',
   styleUrls: ['./favorties.component.scss']
 })
+ 
 export class FavortiesComponent implements OnInit {
-
+  Favorties;
   constructor() { }
-item;
   ngOnInit() {
-    let item = JSON.parse(localStorage.getItem(this.item));
-    console.log(item);
+    this.Favorties = JSON.parse(localStorage.getItem('Favorites'));
+    console.log(this.Favorties);
   }
 
 }

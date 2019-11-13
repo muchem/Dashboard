@@ -1,1 +1,20 @@
-<p>favorties works!</p>
+<div class="container">
+    <p>Hello Favorties</p>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let fav of Favorties">
+      <a href="#" routerLink="/recipe/{{fav.recipe_id}}">
+        <div class="recipe-box">
+          <div class="img-box">
+            <img src='{{fav.image_url}}'>
+          </div>
+          <div class="info-box">
+            <h6><b>{{fav.title}}</b></h6>
+            <p>{{fav.publisher}}</p>
+            <p>{{fav.id}}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+

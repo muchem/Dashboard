@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +24,8 @@ import { RecipeDetailsComponent } from './Components/recipe-details/recipe-detai
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    StorageServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

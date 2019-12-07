@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.Service.getRecipes().subscribe(recipe =>{
-      this.recipes = recipe.recipes;
+     
     })
     
   }

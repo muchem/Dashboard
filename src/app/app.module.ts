@@ -4,20 +4,25 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { FavortiesComponent } from './Components/favorties/favorties.component';
+import { AutoSuggestBarComponent } from './Components/auto-suggest-bar/auto-suggest-bar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FavortiesComponent
+    FavortiesComponent,
+    AutoSuggestBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     StorageServiceModule
   ],
   providers: [],

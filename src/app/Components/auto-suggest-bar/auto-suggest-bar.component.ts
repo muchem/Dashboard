@@ -8,17 +8,21 @@ import { FormControl } from '@angular/forms';
 })
 export class AutoSuggestBarComponent implements OnInit {
   results;
+  chart = [];
  queryField: FormControl = new FormControl();
   constructor(private Service:DataService) { }
 
   ngOnInit() {
-    this.queryField.valueChanges.subscribe(queryField =>this.Service.searchSymbol(queryField).subscribe(response => { 
+    this.queryField.valueChanges
+    .subscribe(queryField =>this.Service.searchSymbol(queryField).subscribe(response => { 
       this.results = response.bestMatches;
-      console.log(this.results);
     
     })
  );
  
+  }
+  reset(){
+    this.queryField.setValue("");
   }
   
   }

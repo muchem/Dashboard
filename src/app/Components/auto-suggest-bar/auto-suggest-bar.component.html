@@ -1,10 +1,15 @@
 <section class="filter-wrapper">
     <div class="keyword-wrapper">
-   <input [formControl]="queryField" type="text" id="keyword" placeholder="search for artists..." autofocus/>
+   <input [formControl]="queryField" type="text" id="keyword" placeholder="search company symbol.." autofocus/>
      </div>
-   <ul class="filter-select">
-     <li *ngFor="let result of results" class="filter-select-list"><p class="artist-name">
-       {{result.symbol}}</p>
-   <span class="tags" *ngFor='let genre of result?.name | slice:0:6'>{{genre}}</span>
+   <ul class="filter-select" style ="padding-left:0">
+
+     <li *ngFor="let result of results" class="filter-select-list" (click)="reset()" >
+      <a href = "#" routerLink='/result/{{result["1. symbol"]}}/{{result["2. name"]}}'(click)="reset()">
+        <p class="company-symbol" style = "margin-bottom:0">
+          {{result["1. symbol"]}}</p>
+        </a>
+       <span class="tags"><small>{{result["2. name"]}}</small></span>
+      </li> 
    </ul>
    </section>

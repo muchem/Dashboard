@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { FavortiesComponent } from './Components/favorties/favorties.component';
 import { AutoSuggestBarComponent } from './Components/auto-suggest-bar/auto-suggest-bar.component';
+import { ResultComponent } from './Components/result/result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FavortiesComponent,
-    AutoSuggestBarComponent
+    AutoSuggestBarComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,6 @@ import { FormControl } from '@angular/forms';
 })
 export class AutoSuggestBarComponent implements OnInit {
   results;
-  chart = [];
  queryField: FormControl = new FormControl();
   constructor(private Service:DataService) { }
 
@@ -17,7 +16,7 @@ export class AutoSuggestBarComponent implements OnInit {
     .subscribe(queryField =>this.Service.searchSymbol(queryField).subscribe(response => { 
       this.results = response.bestMatches;
     
-    })
+    })  
  );
  
   }

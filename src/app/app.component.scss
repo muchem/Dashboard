@@ -102,6 +102,7 @@ a{
     margin-left:278px;
     margin-top:65px;
     padding:20px;
+    width:100%;
 
 }
 footer{
@@ -114,41 +115,42 @@ footer{
        #search-Box {
            width: 35vh;
        }
+       .logo{
+        display:none;
+        padding: 0;
+    }
+    .menu {
+        display: none;
+        margin-top:60px;
+    }
+
+    .other {
+        padding-left: 5px;
+    }
+
+    .route-sec {
+        margin-left: 0;
+    }
+
+    #side-nav {
+        display: block;
+        padding-right:5px;
+    }
+    header{
+        padding: 15px 0px;
+    }
+    #search-Box {
+        width: 30vh;
+    }
+    .active {
+        display: block;
+        height: 100vh;
+        width: 250px;
+        
+    }
  
 }
 @media screen and (max-width:576px){
-        .logo{
-            display:none;
-            padding: 0;
-        }
-        .menu {
-            display: none;
-            margin-top:60px;
-        }
-
-        .other {
-            padding-left: 5px;
-        }
-
-        .route-sec {
-            margin-left: 0;
-        }
-
-        #side-nav {
-            display: block;
-            padding-right:5px;
-        }
-        header{
-            padding: 15px 0px;
-        }
-        #search-Box {
-            width: 30vh;
-        }
-        .active {
-            display: block;
-            height: 100vh;
-            width: 250px;
-            
-        }
+        
 
 }

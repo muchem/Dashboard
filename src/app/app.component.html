@@ -7,7 +7,7 @@
   </div>
   <div class="other">
     <div>
-      <img src="Photos/menu-icon.png"id="side-nav"
+      <img src=""id="side-nav"
         (click)="toggle()">
     </div>
     <div>
@@ -33,7 +33,7 @@
       </ul>
     </div>
     <div class="route-sec">
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
     </div>
   </main>
 </div>

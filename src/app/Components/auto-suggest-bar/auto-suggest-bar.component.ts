@@ -10,7 +10,7 @@ export class AutoSuggestBarComponent implements OnInit {
   results;
  queryField: FormControl = new FormControl();
   constructor(private Service:DataService) { }
-
+  
   ngOnInit() {
     this.queryField.valueChanges
     .subscribe(queryField =>this.Service.searchSymbol(queryField).subscribe(response => { 
@@ -18,10 +18,11 @@ export class AutoSuggestBarComponent implements OnInit {
     
     })  
  );
- 
+                                                                                                                                          
   }
   reset(){
     this.queryField.setValue("");
+    location.reload();
   }
   
   }

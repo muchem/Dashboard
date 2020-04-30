@@ -11,7 +11,6 @@ import { DataService } from 'src/app/Services/data.service';
 
 export class ResultComponent implements OnInit , OnChanges {
   CompanyName;
-  checkCompanySymbol;
   CompanySymbol;
   stockValueChart = [];
   sampleChart =  [];
@@ -40,7 +39,7 @@ export class ResultComponent implements OnInit , OnChanges {
     });
    
     this.sampleChart = new Chart('myChart', {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: years,//  labels: ['9:30am','','','','','','','','','','','', '10:30am','','','','','','','','','','','','11:30am','','','','','','','','','','','','12:30pm','','','','','','','','','','','','1:30pm','','','','','','','','','','','','2:30pm','','','','','','','','','','','','3:30pm','','','','','','4:00pm'],
         datasets: [
@@ -86,57 +85,52 @@ export class ResultComponent implements OnInit , OnChanges {
       this.dailyAdjusted =  Object.entries(daily['Time Series (Daily)']).splice(0,4);
     })
     this.Service.getRecommendationTrend(this.CompanySymbol).subscribe(trend =>{
-      this.trends = trend;
-      console.log(this.trends[0]);
-
+      this.trends = trend[0];
+      console.log(this.trends)
+      this.trendCharts = new Chart('trendChart',{
+        type:'bar',
+        data:{
+          labels:[this.CompanyName],
+          datasets: [
+            { 
+              data: [this.trends['buy']],
+              label: "Buy",
+              borderColor: "#3e95cd",
+              backgroundColor:'#3e95cd',
+              fill: true
+            },
+            { 
+              data:[ this.trends['hold']],
+              label: "Hold",
+              borderColor: "#de4f98",
+              backgroundColor:'#de4f98',
+              fill: true
+            },
+            { 
+              data:[ this.trends['sell']],
+              label: "Sell",
+              borderColor: "#9a4fde",
+              backgroundColor:'#9a4fde',
+              fill: true
+            },
+            { 
+              data: [this.trends['strongBuy']],
+              label: "Strong Buy",
+              borderColor: "#ffab14",
+              backgroundColor:'#ffab14',
+              fill: true
+            },
+            { 
+              data: [this.trends['strongSell']],
+              label: "Strong Sell",
+              borderColor: "#4b14ff",
+              backgroundColor:"#4b14ff",
+              fill: true
+            }
+          ]
+        }
+      })
     })
-  /*  this.trendCharts = new Chart('trendChart',{
-      type:'bar',
-      data:{
-        labels:'Company',
-        datasets: [
-          { 
-            data: this.trends[0]['buy'],
-            label: "Buy",
-            borderColor: "#3e95cd",
-            backgroundColor:'#3e95cd',
-            fill: true
-          },
-          { 
-            data: this.trends[0]['hold'],
-            label: "Hold",
-            borderColor: "#de4f98",
-            backgroundColor:'#de4f98',
-            fill: true
-          },
-          { 
-            data: this.trends[0]['sell'],
-            label: "Sell",
-            borderColor: "#9a4fde",
-            backgroundColor:'#9a4fde',
-            fill: true
-          },
-          { 
-            data: this.trends[0]['strongbuy'],
-            label: "Strong Buy",
-            borderColor: "#ffab14",
-            backgroundColor:'#ffab14',
-            fill: true
-          },
-          { 
-            data: this.trends[0].strongSell,
-            label: "Strong Sell",
-            borderColor: "#4b14ff",
-            backgroundColor:"#4b14ff",
-            fill: true
-          }
-        ]
-      }
-    })
-*/
-  }
-  ngOnDoCheck(){
-    console.log(this.CompanySymbol);
   }
 }
  

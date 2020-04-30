@@ -2,9 +2,16 @@
     padding-bottom:5px;
     color:#454545;
 }
-.chart-container{
+.chart-container,.trend-chart-container{
     background-color:white;
     padding: 8px 5px;
+    h6{
+        padding:8px 3px;
+        border-bottom:1px solid rgb(231, 231, 231);
+    }
+}
+.chart{
+    width: 10px;
 }
 .entry-list{
     padding:8px;

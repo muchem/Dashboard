@@ -1,4 +1,4 @@
-# Fooderia
+# Stockery
 
 
 ## Development server

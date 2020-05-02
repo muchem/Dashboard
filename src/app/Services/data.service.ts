@@ -26,4 +26,14 @@ export class DataService {
     this.selectedSynbol = { param: symbol }; 
     return this.http.get<any>(`https://finnhub.io/api/v1/stock/recommendation?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
   }
+  getPriceTargets(companySymbol:string):Observable<any>{
+    let symbol= new HttpParams().set('query',companySymbol);
+    this.selectedSynbol = { param: symbol }; 
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/price-target?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
+  }
+  getRevenueEstimates(companySymbol:string){
+    let symbol= new HttpParams().set('query',companySymbol);
+    this.selectedSynbol = { param: symbol }; 
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/revenue-estimate?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
+  }
 }

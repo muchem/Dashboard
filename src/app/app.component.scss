@@ -42,15 +42,14 @@ header{
 }
 .menu{
     background: #232526;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     height:100%;
     width:275px;
     margin:auto;
     position: fixed;
     margin-top:70px;
-     z-index:1;
+    z-index:1;
 }
 .menu-img-box{
     width: 100%;
@@ -94,8 +93,7 @@ a{
          text-decoration:none;
      }
 
-}
-#food-icon{
+}#stock-icon{
     width:40px;
 }
 .route-sec{
@@ -111,6 +109,7 @@ footer{
     z-index:1;
 
 }
+
 @media screen and (max-width:768px){
        #search-Box {
            width: 35vh;

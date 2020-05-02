@@ -15,8 +15,16 @@ export class ResultComponent implements OnInit , OnChanges {
   stockValueChart = [];
   sampleChart =  [];
   trendCharts = [];
+  priceTargetChart = [];
+  revenueEstimateChart = [];
+  revenueEstimates;
   dailyAdjusted;
   trends;
+  revenueLabels = [];
+  revenueAverages = [];
+  revenueLows = [];
+  revenueHighs = [];
+  priceTarget;
 
   constructor(private route:ActivatedRoute,private Service:DataService) {}
   ngOnChanges(change: SimpleChanges){
@@ -86,7 +94,6 @@ export class ResultComponent implements OnInit , OnChanges {
     })
     this.Service.getRecommendationTrend(this.CompanySymbol).subscribe(trend =>{
       this.trends = trend[0];
-      console.log(this.trends)
       this.trendCharts = new Chart('trendChart',{
         type:'bar',
         data:{
@@ -130,6 +137,66 @@ export class ResultComponent implements OnInit , OnChanges {
           ]
         }
       })
+    })
+
+    this.Service.getPriceTargets(this.CompanySymbol).subscribe(target =>{
+      this.priceTarget = target;
+      this.priceTargetChart = new Chart('targetChart',{
+        type:'line',
+        data:{
+          labels:['Low', 'Median','high'],
+          datasets: [
+            { 
+              data: [this.priceTarget['targetLow'],this.priceTarget['targetMedian'],this.priceTarget['targetHigh']],
+              label: "Target Value",
+              borderColor: "#3e95cd",
+              backgroundColor:'#3e95cd',
+              fill: false
+            }
+          ]
+        }
+      })
+    })
+    this.Service.getRevenueEstimates(this.CompanySymbol).subscribe(estimate =>{
+      this.revenueEstimates = estimate.data.splice(0,12);
+      console.log(this.revenueEstimates);
+      for(let i = 0; i < this.revenueEstimates.length; i++){
+        this.revenueLabels.push(this.revenueEstimates[i].period);
+        this.revenueAverages.push(this.revenueEstimates[i].revenueAvg);
+        this.revenueLows.push(this.revenueEstimates[i].revenueLow);
+        this.revenueHighs.push(this.revenueEstimates[i].revenueHigh);
+      }
+
+      this.priceTargetChart = new Chart('revenueChart',{
+        type:'line',
+        data:{
+          labels:this.revenueLabels.reverse(),
+          datasets: [
+            { 
+              data: this.revenueHighs.reverse(),
+              label: "High",
+              borderColor: "#4b14ff",
+              backgroundColor:'#4b14ff',
+              fill: false
+            },
+            { 
+              data: this.revenueAverages.reverse(),
+              label: "Average",
+              borderColor: "#3e95cd",
+              backgroundColor:'#3e95cd',
+              fill: false
+            },
+            { 
+              data: this.revenueLows.reverse(),
+              label: "Low",
+              borderColor: "#de4f98",
+              backgroundColor:'#de4f98',
+              fill: false
+            }
+          ]
+        }
+      })
+
     })
   }
 }

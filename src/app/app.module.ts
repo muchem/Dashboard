@@ -10,6 +10,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { FavortiesComponent } from './Components/favorties/favorties.component';
 import { AutoSuggestBarComponent } from './Components/auto-suggest-bar/auto-suggest-bar.component';
 import { ResultComponent } from './Components/result/result.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ResultComponent } from './Components/result/result.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    StorageServiceModule
+    StorageServiceModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

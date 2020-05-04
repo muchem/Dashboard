@@ -36,4 +36,9 @@ export class DataService {
     this.selectedSynbol = { param: symbol }; 
     return this.http.get<any>(`https://finnhub.io/api/v1/stock/revenue-estimate?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
   }
+  getActualRevenue(companySymbol:string){
+    let symbol= new HttpParams().set('query',companySymbol);
+    this.selectedSynbol = { param: symbol }; 
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/earnings?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
+  }
 }

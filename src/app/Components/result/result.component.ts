@@ -21,10 +21,14 @@ export class ResultComponent implements OnInit , OnChanges {
   dailyAdjusted;
   trends;
   revenueLabels = [];
-  revenueAverages = [];
-  revenueLows = [];
-  revenueHighs = [];
+  revenueEstimate = [];
+  revenueActuals = [];
   priceTarget;
+  earningCalender;
+  quarterlyEspChart = [];
+  espCalenderDates = [];
+  espEstimates = [];
+  espActuals = [];
 
   constructor(private route:ActivatedRoute,private Service:DataService) {}
   ngOnChanges(change: SimpleChanges){
@@ -33,7 +37,6 @@ export class ResultComponent implements OnInit , OnChanges {
       }
   }
   ngOnInit() {
-    console.log("result component initiated")
     var years = [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050];
 // For drawing the lines
     var africa = [86,114,106,106,107,111,133,221,783,2478];
@@ -157,46 +160,89 @@ export class ResultComponent implements OnInit , OnChanges {
         }
       })
     })
-    this.Service.getRevenueEstimates(this.CompanySymbol).subscribe(estimate =>{
-      this.revenueEstimates = estimate.data.splice(0,12);
-      console.log(this.revenueEstimates);
-      for(let i = 0; i < this.revenueEstimates.length; i++){
-        this.revenueLabels.push(this.revenueEstimates[i].period);
-        this.revenueAverages.push(this.revenueEstimates[i].revenueAvg);
-        this.revenueLows.push(this.revenueEstimates[i].revenueLow);
-        this.revenueHighs.push(this.revenueEstimates[i].revenueHigh);
-      }
+   this.Service.getRevenue(this.CompanySymbol).subscribe(calender =>{
+    this.revenueEstimates = calender['earningsCalendar']
+    for(let i = 0; i < this.revenueEstimates.length; i++){
+      this.revenueLabels.push(this.revenueEstimates[i].date);
+      this.revenueEstimate.push(this.revenueEstimates[i].revenueEstimate);
+      this.revenueActuals.push(this.revenueEstimates[i].revenueActual);
+    }
 
-      this.priceTargetChart = new Chart('revenueChart',{
-        type:'line',
+    this.priceTargetChart = new Chart('revenueChart',{
+      type:'line',
+      data:{
+        labels:this.revenueLabels.reverse(),
+        datasets: [
+          { 
+            data: this.revenueEstimate.reverse(),
+            label: "Estimate",
+            borderColor: "#9a4fde",
+            backgroundColor:'#9a4fde',
+            fill: false
+          },
+          { 
+            data: this.revenueActuals.reverse(),
+            label: "Actual",
+            borderColor: "#3e95cd",
+            backgroundColor:'#3e95cd',
+            fill: false
+          },
+        ]
+      },
+      options: {
+        scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Date (Quarterly)'
+						}
+					}]
+				}
+      }
+    })
+  }) 
+
+    this.Service.getEarningsCalender(this.CompanySymbol).subscribe(calender =>{
+      this.earningCalender = calender['earningsCalendar'];
+      for(let i = 0; i< this.earningCalender.length; i++){
+        this.espCalenderDates.push(this.earningCalender[i].date);
+        this.espActuals.push(this.earningCalender[i].epsActual);
+        this.espEstimates.push(this.earningCalender[i].epsEstimate);
+      }
+      this.quarterlyEspChart = new Chart('espChart', {
+        type:"bar",
         data:{
-          labels:this.revenueLabels.reverse(),
-          datasets: [
-            { 
-              data: this.revenueHighs.reverse(),
-              label: "High",
-              borderColor: "#4b14ff",
-              backgroundColor:'#4b14ff',
-              fill: false
-            },
-            { 
-              data: this.revenueAverages.reverse(),
-              label: "Average",
+          labels: this.espCalenderDates.reverse(),
+          datasets:[
+            {
+              data: this.espEstimates.reverse(),
+              label: "Estimate",
               borderColor: "#3e95cd",
               backgroundColor:'#3e95cd',
-              fill: false
+              fill: true
             },
-            { 
-              data: this.revenueLows.reverse(),
-              label: "Low",
-              borderColor: "#de4f98",
-              backgroundColor:'#de4f98',
-              fill: false
+            {
+              data: this.espActuals.reverse(),
+              label: "Actual",
+              borderColor: "#ffab14",
+              backgroundColor:'#ffab14',
+              fill: true
             }
           ]
+        },
+        options: {
+          scales: {
+            xAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Date (Quarterly)'
+              }
+            }]
+          }
         }
       })
-
     })
   }
 }

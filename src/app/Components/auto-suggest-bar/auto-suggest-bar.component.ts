@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../../Services/data.service';
 import { FormControl } from '@angular/forms';
+import { NavigationEnd , Router } from '@angular/router';
 @Component({
   selector: 'app-auto-suggest-bar',
   templateUrl: './auto-suggest-bar.component.html',
@@ -8,8 +9,9 @@ import { FormControl } from '@angular/forms';
 })
 export class AutoSuggestBarComponent implements OnInit {
   results;
+  Subscription: any;
  queryField: FormControl = new FormControl();
-  constructor(private Service:DataService) { }  
+  constructor(private Service:DataService, private router:Router) { }  
   ngOnInit() {
     this.queryField.valueChanges
     .subscribe(queryField =>this.Service.searchSymbol(queryField).subscribe(response => { 
@@ -20,8 +22,18 @@ export class AutoSuggestBarComponent implements OnInit {
 }
   reset(){
     this.queryField.setValue("");
-    location.reload();
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+    
+    this.Subscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.router.navigated = false;
+      }
+    });
+    if (this.Subscription) {
+      this.Subscription.unsubscribe();
+    }
   }
-  
   }
 

@@ -2,8 +2,10 @@
     padding-bottom:5px;
     color:#454545;
 }
-.trend-chart-container , .chart-container{
+ .chart-container{
     background-color:white;
+    width:100%;
+    margin: 8px 0px;
     padding: 8px 5px;
     border:solid 1px rgb(216, 216, 216);
     border-radius: 8px;
@@ -11,20 +13,8 @@
         padding:8px 3px;
         border-bottom:1px solid rgb(218, 218, 218);
     }
-}
-.ga{
-    padding:8px 20px; 
-    margin:2px;
-    color:white;
-    background: #2193b0;
-    border: solid 1px lightblue;
-    border-radius: 8px;
-    background: -webkit-linear-gradient(to top, #6dd5ed, #2193b0);  
-    background: linear-gradient(to top, #6dd5ed, #2193b0); 
-    align-items:center;
-    h6{
-        border-bottom:1px solid white;
-        padding-bottom:3px;
+    canvas{
+        width:100%;
     }
 }
 
@@ -43,6 +33,7 @@
 }
 .stat-container{
     padding:8px 4px; 
+    margin:8px;
     color:white;
     background: #2193b0;
     border: solid 1px lightblue;

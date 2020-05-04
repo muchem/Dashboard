@@ -1,13 +1,15 @@
 <div class = "main"> 
   <h3 class = "company-name">{{ CompanyName }}</h3>
-               <div class="chart-container"style = "width:100%; height:50vh" > 
-                <canvas id="myChart" style = "height:100%; width:100%"></canvas>
-               </div>
+  <div class = "row">
+    <div class = "col-12">
+      <div class="chart-container"> 
+        <canvas id="myChart" style = "width:100%"></canvas>
+       </div>
+    </div>
+  </div>
 <div class = "row"style = "padding:0; margin : 10px 0;">
              <div class = "col-lg-3 col-sm-6" style = "padding:0;"*ngFor ="let entry of dailyAdjusted" >
-            <!--  <h6 class = "text-center"><b>{{entry[0]}}</b></h6>-->
-               <div class = 'stat-container text-center' style = "display:flex;">
-                 <div class = "stat-box-1">
+               <div class = 'stat-container'>
                   <h6 class = "text-center"><b>{{entry[0]}}</b></h6>
                   <ul class = 'entry-list' >
                          <li>Open:{{entry[1]['1. open']}}</li>
@@ -16,39 +18,33 @@
                          <li>Close:{{entry[1]['4. close']}}</li>
                    </ul>
                  </div>
-                 <div class ='stat-box-2 text-center'>
-                   <div class = "icon-box text-center">
-                    <img src ="https://i.ya-webdesign.com/images/graph-transparent-white-7.png" width ="85px" id = "line-icon"/>
-                   </div>
-                 </div>
-               </div>
               </div>
         </div>
         <div class = "row">
-          <div class = "col-md-6" style = padding-right:2px;>
-            <div class = "trend-chart-container"style = "width:100%;">
+          <div class = "col-md-6">
+            <div class = "chart-container">
               <h6><b>Analyst Recomendation</b></h6>
-              <canvas id = "trendChart" style= "width:100%; height:100%"></canvas>
+              <canvas id = "trendChart"></canvas>
             </div>
           </div>
-          <div class = "col-md-6" style = "padding-left:2px;">
-            <div class = "trend-chart-container"style = "width:100%;">
+          <div class = "col-md-6">
+            <div class = "chart-container">
             <h6><b>Price Targets</b></h6>
-            <canvas id = "targetChart" style= "width:100%; height:100%"></canvas>
+            <canvas id = "targetChart"></canvas>
           </div>
         </div> 
         </div>
         <div class = 'row'>
           <div class = "col-md-8">
-            <div class = "trend-chart-container"style = "width:100%;">
-              <h6><b>Revenue Estimate</b></h6>
-              <canvas id = "revenueChart" style= "width:100%;"></canvas>
+            <div class = "chart-container"  style ="height:95%">
+              <h6><b>Revenue</b></h6>
+              <canvas id = "revenueChart"></canvas>
             </div>
           </div>
-          <div class = "col-md-4" style = "margin-top:8px">
-            <div class = "trend-chart-container"style = "width:100%;">
-              <h6><b>Actual Revenue</b></h6>
-              <canvas id = "revenueChart" style= "width:100%;"></canvas>
+          <div class = "col-md-4">
+            <div class = "chart-container" style ="height:95%">
+              <h6><b>Earnings Per Share</b></h6>
+              <canvas id = "espChart" style = "height:100%"></canvas>
             </div>
           </div>
         </div>

@@ -16,10 +16,10 @@ export class DataService {
   getBoeingData():Observable<any>{
     return this.http.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=BA&interval=5min&apikey=UHKM95R37PUMWX1E`);
   }
-  getDaily(companySymbol:string):Observable<any[]>{
+  getDaily(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('query',companySymbol);
     this.selectedSynbol = { param: symbol };
-    return this.http.get<any[]>(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${this.selectedSynbol.param.updates[0].value}&apikey=UHKM95R37PUMWX1E`);
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${this.selectedSynbol.param.updates[0].value}&apikey=UHKM95R37PUMWX1E`);
   }
   getRecommendationTrend(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('query',companySymbol);
@@ -31,14 +31,14 @@ export class DataService {
     this.selectedSynbol = { param: symbol }; 
     return this.http.get<any>(`https://finnhub.io/api/v1/stock/price-target?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
   }
-  getRevenueEstimates(companySymbol:string){
+  getRevenue(companySymbol:string){
     let symbol= new HttpParams().set('query',companySymbol);
     this.selectedSynbol = { param: symbol }; 
-    return this.http.get<any>(`https://finnhub.io/api/v1/stock/revenue-estimate?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
+    return this.http.get<any>(`https://finnhub.io/api/v1/calendar/earnings?from=2018-01-01&symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
   }
-  getActualRevenue(companySymbol:string){
+  getEarningsCalender(companySymbol:string){
     let symbol= new HttpParams().set('query',companySymbol);
     this.selectedSynbol = { param: symbol }; 
-    return this.http.get<any>(`https://finnhub.io/api/v1/stock/earnings?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
+    return this.http.get<any>(`https://finnhub.io/api/v1/calendar/earnings?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Chart } from 'chart.js';
 import { DataService } from 'src/app/Services/data.service';
@@ -31,7 +31,9 @@ export class ResultComponent implements OnInit{
   espActuals = [];
 
   intradayTime = [];
-  intradayValue = [];
+  intradayOpen = [];
+  intradayHigh = [];
+  intradayLow = []
   intraday;
 
   constructor(private route:ActivatedRoute,private Service:DataService) {}
@@ -42,25 +44,87 @@ export class ResultComponent implements OnInit{
     });
    this.Service.getIntradayData(this.CompanySymbol).subscribe( value =>{
      this.intraday = Object.entries(value['Time Series (5min)']).splice(0,78).reverse();
-     console.log(this.intraday);
      for(let i = 0; i<this.intraday.length; i++){
        this.intradayTime.push(this.intraday[i][0]);
-       this.intradayValue.push(this.intraday[i][1]["1. open"])
+       this.intradayOpen.push(this.intraday[i][1]["1. open"])
+       this.intradayHigh.push(this.intraday[i][1]["2. high"]);
+       this.intradayLow.push(this.intraday[i][1]["3. low"])
      }
-     this.sampleChart = new Chart('myChart', {
+     this.sampleChart = new Chart('intradayChart', {
       type: 'line',
       data: {
       labels:this.intradayTime,
-        // ['9:35am','','','','','','','','','','', '10:30am','','','','','','','','','','','','11:30am','','','','','','','','','','','','12:30pm','','','','','','','','','','','','1:30pm','','','','','','','','','','','','2:30pm','','','','','','','','','','','','3:30pm','','','','','','4:00pm'],
         datasets: [
           { 
-            data: this.intradayValue,
-            label: "Value",
-            borderColor: "#de4f98",
-            backgroundColor:'#de4f98',
-            fill: false
+            data: this.intradayOpen,
+            label: "Open",
+            pointRadius: 1,
+            lineTension: 0,
+            borderWidth: 2,
+            borderColor: "#3e95cd",
+            backgroundColor:'#3e95cd',
+            fill:false
+          },
+          {
+            data: this.intradayHigh,
+            label: "High",
+            pointRadius: 1,
+            lineTension: 0,
+            borderWidth: 2,
+            borderColor: "#47cd5a",
+            backgroundColor:'#47cd5a',
+            fill:false
+          },
+          {
+            data: this.intradayLow,
+            label: "Low",
+            pointRadius: 1,
+            lineTension: 0,
+            borderWidth: 2,
+            borderColor: "#e52436",
+            backgroundColor:'#e52436',
+            fill:false
           }
+          
         ]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            display: true,
+            offset: true,
+            ticks: {
+							major: {
+								enabled: true,
+								fontStyle: 'bold'
+							},
+							source: 'data',
+							autoSkip: true,
+							autoSkipPadding: 75,
+							maxRotation: 0,
+							sampleSize: 79
+            },
+            
+            scaleLabel: {
+              display: true,
+              labelString: 'US/Eastern'
+            }
+          }]
+        }
+      },
+      tooltips: {
+        intersect: false,
+        mode: 'index',
+        callbacks: {
+          label: function(tooltipItem, myData) {
+            var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+            if (label) {
+              label += ': ';
+            }
+            label += parseFloat(tooltipItem.value).toFixed(2);
+            return label;
+          }
+        }
       }
     });
    })
@@ -69,9 +133,6 @@ export class ResultComponent implements OnInit{
       this.dailyAdjusted =  Object.entries(daily['Time Series (Daily)']).splice(0,4);
     })
     this.Service.getRecommendationTrend(this.CompanySymbol).subscribe(trend =>{
-      this.Service.getDaily(this.CompanySymbol).subscribe(daily =>{
-        this.dailyAdjusted =  Object.entries(daily['Time Series (Daily)']).splice(0,4);
-      })
       this.trends = trend[0];
       this.trendCharts = new Chart('trendChart',{
         type:'bar',
@@ -128,8 +189,8 @@ export class ResultComponent implements OnInit{
             { 
               data: [this.priceTarget['targetLow'],this.priceTarget['targetMedian'],this.priceTarget['targetHigh']],
               label: "Target Value",
-              borderColor: "#3e95cd",
-              backgroundColor:'#3e95cd',
+              backgroundColor: "#ef6778",
+              borderColor: "#ef6778",
               fill: false
             }
           ]

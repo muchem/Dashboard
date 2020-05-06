@@ -55,6 +55,10 @@
     }
     .chart-container{
         text-align:center;
+        height:90%;
+        canvas{
+            height:100%;
+        }
     }
 
 }

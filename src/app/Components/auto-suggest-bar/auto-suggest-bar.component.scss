@@ -39,3 +39,12 @@ li{
         background: #fff
     }
 }
+@media screen and (max-width:576px){
+    .filter-select{
+        width:70vw;
+        font-size:0.8em;
+    }
+    .filter-wrapper{
+        width:70vw;
+    }
+}

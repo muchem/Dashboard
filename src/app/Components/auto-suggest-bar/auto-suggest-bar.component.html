@@ -3,7 +3,6 @@
    <input [formControl]="queryField" type="text" id="keyword" placeholder="search company symbol.." autofocus/>
      </div>
    <ul class="filter-select" style ="padding-left:0">
-
      <li *ngFor="let result of results" class="filter-select-list" (click)="reset()" >
       <a href = "#" routerLink='/result/{{result["1. symbol"]}}/{{result["2. name"]}}'(click)="reset()">
         <p class="company-symbol" style = "margin-bottom:0">

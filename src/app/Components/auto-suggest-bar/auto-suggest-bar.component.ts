@@ -16,7 +16,6 @@ export class AutoSuggestBarComponent implements OnInit {
     this.queryField.valueChanges
     .subscribe(queryField =>this.Service.searchSymbol(queryField).subscribe(response => { 
       this.results = response.bestMatches;
-    
     })  
  );
 }
@@ -25,7 +24,6 @@ export class AutoSuggestBarComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
-    
     this.Subscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.router.navigated = false;
@@ -35,5 +33,5 @@ export class AutoSuggestBarComponent implements OnInit {
       this.Subscription.unsubscribe();
     }
   }
-  }
+}
 

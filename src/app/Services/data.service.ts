@@ -13,8 +13,10 @@ export class DataService {
   searchSymbol(queryString: string):Observable<any>{
     return this.http.get(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${queryString}&apikey=UHKM95R37PUMWX1E`);
   }
-  getBoeingData():Observable<any>{
-    return this.http.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=BA&interval=5min&apikey=UHKM95R37PUMWX1E`);
+  getIntradayData(companySymbol:string):Observable<any>{
+    let symbol= new HttpParams().set('query',companySymbol);
+    this.selectedSynbol = { param: symbol };
+    return this.http.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.selectedSynbol.param.updates[0].value}&interval=5min&apikey=UHKM95R37PUMWX1E`);
   }
   getDaily(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('query',companySymbol);

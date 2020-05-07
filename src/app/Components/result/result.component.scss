@@ -46,6 +46,27 @@
         padding-bottom:3px;
     }
 }
+.news-card{
+    background-color:white;
+    width:100%;
+    margin: 8px 0px;
+    padding: 8px 5px;
+    border:solid 1px rgb(216, 216, 216);
+    border-radius: 8px;
+    height:350px;
+    overflow:auto;
+    .img-box{
+        width:95%;
+        margin:auto;
+        text-align:center;
+        img{
+            width:100%;
+        }
+    }
+    p{
+        padding-top:5px;
+    }
+}
 @media screen and (max-width:768px){
 
 }
@@ -60,5 +81,7 @@
             height:100%;
         }
     }
-
+    .img-box{
+        width:40%;
+    }
 }

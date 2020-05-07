@@ -33,14 +33,19 @@ export class DataService {
     this.selectedSynbol = { param: symbol }; 
     return this.http.get<any>(`https://finnhub.io/api/v1/stock/price-target?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
   }
-  getRevenue(companySymbol:string){
+  getRevenue(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('query',companySymbol);
     this.selectedSynbol = { param: symbol }; 
     return this.http.get<any>(`https://finnhub.io/api/v1/calendar/earnings?from=2018-01-01&symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
   }
-  getEarningsCalender(companySymbol:string){
+  getEarningsCalender(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('query',companySymbol);
     this.selectedSynbol = { param: symbol }; 
     return this.http.get<any>(`https://finnhub.io/api/v1/calendar/earnings?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
+  }
+  getCompanyNews(companySymbol:string){
+    let symbol= new HttpParams().set('query',companySymbol);
+    this.selectedSynbol = { param: symbol }; 
+    return this.http.get<any>(`https://finnhub.io/api/v1/company-news?symbol=${this.selectedSynbol.param.updates[0].value}&from=2020-01-01&to=2020-05-01&token=bq3rdo7rh5rb0pdpg08g`);
   }
 }

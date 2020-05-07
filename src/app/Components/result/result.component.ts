@@ -36,6 +36,8 @@ export class ResultComponent implements OnInit{
   intradayLow = []
   intraday;
 
+  companyNews;
+
   constructor(private route:ActivatedRoute,private Service:DataService) {}
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -280,6 +282,9 @@ export class ResultComponent implements OnInit{
           }
         }
       })
+    })
+    this.Service.getCompanyNews(this.CompanySymbol).subscribe(article =>{
+      this.companyNews = article.splice(0,6);
     })
   }
 }

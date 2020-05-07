@@ -48,5 +48,19 @@
             </div>
           </div>
         </div>
-        
+        <div class="row">
+          <div class='col-md-4 ' *ngFor="let article of companyNews">
+              <a href = "{{article.url}}" target = "_blank">
+                <div class = "news-card">
+                  <h4>{{article.headline}}</h4>
+                  <div class ="img-box">
+                    <img src = "{{article.image}}" alt ="image not avaliable">
+                  </div>
+                  <p>
+                    {{article.summary}}
+                  </p>
+                </div>
+              </a>
+          </div>
+        </div>
 </div>

@@ -80,9 +80,11 @@ header{
 li{
     list-style:none;
      padding: 15px 5px;
+     margin:0 8px 0 5px;
      color:#e4e4e4;
      padding-left:10px;
      text-decoration:none;
+     border-bottom:solid 1px rgb(78, 78, 78);
      &:hover{   
         text-decoration:none;
        

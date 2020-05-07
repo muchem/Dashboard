@@ -11,6 +11,7 @@ import { FavortiesComponent } from './Components/favorties/favorties.component';
 import { AutoSuggestBarComponent } from './Components/auto-suggest-bar/auto-suggest-bar.component';
 import { ResultComponent } from './Components/result/result.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EconomyComponent } from './Components/economy/economy.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     FavortiesComponent,
     AutoSuggestBarComponent,
-    ResultComponent
+    ResultComponent,
+    EconomyComponent
   ],
   imports: [
     BrowserModule,

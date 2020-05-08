@@ -1,1 +1,47 @@
-<p>economy works!</p>
+<div class = "row">
+    <div class = "col-12">
+        <h3>Global Economic Calender</h3>
+        <table class = "eco-table">
+            <tr>
+              <th>Date/Time</th>
+              <th>Country</th>
+              <th>Currency</th>
+              <th>Event</th>
+              <th class = "th-comment">Comment</th>
+              <th>Actual</th>
+              <th>Previous</th>
+            </tr>
+            <tr *ngFor = "let event of EconomicCalender">
+              <td>{{event.date}}</td>
+              <td>{{event.country}}</td>
+              <td>{{event.currency}}</td>
+              <td>
+                  <p class="comment-toolltip"  data-toggle="tooltip" title="{{event.comment}}">
+                    {{event.title}}
+                  </p>
+                </td>
+                <td class = "td-comment">
+                    <div class="modal fade" id="commentModal">
+                        <div class="modal-dialog modal-sm">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                             <p>
+                                {{event.comment}}
+                             </p> 
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#commentModal">
+                        View
+                      </button>
+                </td>
+              <td>{{event.actual}}%</td>
+              <td>{{event.previous}}%</td>
+            </tr>
+          </table>
+    </div>
+</div>

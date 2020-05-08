@@ -1,0 +1,33 @@
+.eco-table{
+    width:100%;
+    background-color:white;
+}
+.comment-toolltip{
+    text-decoration: underline;
+    margin:0px;
+    &:hover{
+        cursor:pointer;
+    }
+}
+td, th {
+    text-align: left;
+    padding:2px;
+    border:solid 1px rgb(216, 216, 216);
+  }
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+.th-comment,.td-comment{
+    display: none;
+}
+@media screen and (max-width:1024px){
+    .th-comment,.td-comment{
+        display: block;
+        border:none;
+        button{
+            margin:5px;
+        }
+       
+    }
+
+}

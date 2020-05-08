@@ -287,10 +287,6 @@ export class ResultComponent implements OnInit{
     this.Service.getCompanyNews(this.CompanySymbol).subscribe(article =>{
       this.companyNews = article.splice(0,6);
     })
-    this.Service.getMajorDevelopment(this.CompanySymbol).subscribe(dev =>{
-      this.majorDevelopments = dev.majorDevelopment;
-      console.log(this.majorDevelopments);
-    })
   }
 }
  

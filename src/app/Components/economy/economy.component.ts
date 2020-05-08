@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/Services/data.service';
 
 @Component({
   selector: 'app-economy',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./economy.component.scss']
 })
 export class EconomyComponent implements OnInit {
-
-  constructor() { }
+  EconomicCalender;
+  constructor(private Service:DataService) { }
 
   ngOnInit() {
+    this.Service.getEconomicCalender().subscribe(event =>{
+      this.EconomicCalender = event['economicCalendar']['result'];
+  
+    })
   }
 
 }

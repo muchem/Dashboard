@@ -46,13 +46,13 @@ export class ResultComponent implements OnInit{
       this.CompanySymbol = params.get('companySymbol');
     });
    this.Service.getIntradayData(this.CompanySymbol).subscribe( value =>{
-     this.intraday = Object.entries(value['Time Series (5min)']).splice(0,78).reverse();
-     for(let i = 0; i<this.intraday.length; i++){
-       this.intradayTime.push(this.intraday[i][0]);
-       this.intradayOpen.push(this.intraday[i][1]["1. open"])
-       this.intradayHigh.push(this.intraday[i][1]["2. high"]);
-       this.intradayLow.push(this.intraday[i][1]["3. low"])
-     }
+    this.intraday = Object.entries(value['Time Series (5min)']).splice(0,78).reverse();
+    for(let i = 0; i<this.intraday.length; i++){
+      this.intradayTime.push(this.intraday[i][0]);
+      this.intradayOpen.push(this.intraday[i][1]["1. open"])
+      this.intradayHigh.push(this.intraday[i][1]["2. high"]);
+      this.intradayLow.push(this.intraday[i][1]["3. low"])
+    }
      this.sampleChart = new Chart('intradayChart', {
       type: 'line',
       data: {

@@ -1,0 +1,26 @@
+.stock-box{
+    padding:8px 4px; 
+    margin:8px;
+    background-color:white;
+    border:solid 1px rgb(216, 216, 216);
+    align-items:center
+    ;
+    border-radius: 8px;
+}
+.col-md-3{
+    padding:0;
+}
+.sector-table{
+    width:100%;
+    background-color: white;
+    .text-box{
+        padding-top:10px;
+        border:solid 1px rgb(216, 216, 216);
+
+    }
+}
+td, th {
+    text-align: left;
+    padding:8px;
+    border:solid 1px rgb(216, 216, 216);
+  }

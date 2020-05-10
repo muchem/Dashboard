@@ -1,0 +1,98 @@
+
+<div class = "row">
+    <div class = "col-md-3">
+        <a href="#" routerLink='/Nasdaq Inc./NDAQ'>
+        <div  class = "stock-box">
+            Nasdaq Inc
+        </div>
+    </a>
+    </div>
+    <div class = "col-md-3">
+        <a href="#" routerLink='/Barrick Gold Corporation/GOLD'>
+        <div  class = "stock-box">
+           Barrick Gold 
+        </div>
+      </a>
+    </div>
+    <div class = "col-md-3">
+        <a href="#" routerLink='/Dow Inc./DOW'>
+        <div  class = "stock-box">
+            Dow Inc.
+        </div>
+    </a>
+    </div>
+    <div class = "col-md-3">
+        <a href="#" routerLink='/Alibaba Group Holding Limited/BABA'>
+        <div  class = "stock-box">
+            Alibaba Group 
+        </div>
+   </a>
+    </div>
+
+</div>
+<router-outlet></router-outlet>
+<div class = "row">
+    <div class = "col-md-8">
+
+    </div>
+    <div class = "col-md-4">
+        <table class = "sector-table">
+        <div class = "text-box text-center">
+            <h5>U.S. Sectors Performance</h5>
+            <p>
+                <small>
+                    As Of {{lastRefreshed}}
+                </small>
+        </p>
+        </div>
+            <tr>
+                <th>Sector</th>
+                <th>Last % Change</th>
+            </tr>
+            <tr>
+                <td>Energy</td>
+                <td>{{sectorData.Energy}}</td>
+            </tr>
+            <tr>
+                <td>Industrials</td>
+                <td>{{sectorData.Industrials}}</td>
+            </tr>
+            <tr>
+                <td>Materials</td>
+                <td>{{sectorData.Materials}}</td>
+            </tr>
+            <tr>
+                <td>Consumer Staples</td>
+                <td>{{sectorData['Consumer Staples']}}</td>
+            </tr>
+            <tr>
+                <td>Financials</td>
+                <td>{{sectorData.Financials}}</td>
+            </tr>
+            <tr>
+                <td>Utilities</td>
+                <td>{{sectorData.Utilities}}</td>
+            </tr>
+            <tr>
+                <td>Real Estate</td>
+                <td>{{sectorData['Real Estate']}}</td>
+            </tr>
+            <tr>
+                <td>Consumer Discretionary</td>
+                <td>{{sectorData['Consumer Discretionary']}}</td>
+            </tr>
+            <tr>
+                <td>Communication Services</td>
+                <td>{{sectorData['Communication Services']}}</td>
+            </tr>
+            <tr>
+                <td>Information Technology</td>
+                <td>{{sectorData['Information Technology']}}</td>
+            </tr>
+            <tr>
+                <td>Health Care</td>
+                <td>{{sectorData['Health Care']}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

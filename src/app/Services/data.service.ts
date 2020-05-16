@@ -14,7 +14,7 @@ export class DataService {
     return this.http.get(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${queryString}&apikey=UHKM95R37PUMWX1E`);
   }
   getIntradayData(companySymbol:string):Observable<any>{
-    let symbol= new HttpParams().set('query',companySymbol);
+    let symbol= new HttpParams().set('symbol',companySymbol);
     this.selectedSynbol = { param: symbol };
     return this.http.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.selectedSynbol.param.updates[0].value}&interval=5min&apikey=UHKM95R37PUMWX1E`);
   }
@@ -51,9 +51,19 @@ export class DataService {
   getEconomicCalender():Observable<any>{
     return this.http.get<any>(`https://finnhub.io/api/v1/calendar/economic?token=bq3rdo7rh5rb0pdpg08g`);
   }
-  getMajorDevelopment(companySymbol:string){
-    let symbol= new HttpParams().set('query',companySymbol);
-    this.selectedSynbol = { param: symbol }; 
-    return this.http.get<any>(`https://finnhub.io/api/v1/major-development?symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
+  getSectorPerformances():Observable<any>{
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=SECTOR&apikey=UHKM95R37PUMWX1E`);
+  }
+  getNasdaqProfile():Observable<any>{
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=NDAQ&token=bq3rdo7rh5rb0pdpg08g`);
+  }
+  getGoldProfile():Observable<any>{
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=GOLD&token=bq3rdo7rh5rb0pdpg08g`);
+  }
+  getDowProfile():Observable<any>{
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=DOW&token=bq3rdo7rh5rb0pdpg08g`);
+  }
+  getAlibabaProfile():Observable<any>{
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=BABA&token=bq3rdo7rh5rb0pdpg08g`);
   }
 }

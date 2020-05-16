@@ -1,7 +1,9 @@
 .company-name{
     padding-bottom:5px;
+    margin:0;
     color:#454545;
 }
+
  .chart-container{
     background-color:white;
     width:100%;
@@ -17,7 +19,14 @@
         width:100%;
     }
 }
-
+#watch-bnt{
+    margin-bottom: 5px;
+    color:#f2f2f2;
+    padding:5px;
+    background-color:#295aaa;
+    border:solid 1px;
+    border-radius: 2px;
+}
 .entry-list{
     padding:0px;
     h6{

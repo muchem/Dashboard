@@ -9,7 +9,7 @@ export class FavortiesComponent implements OnInit {
 
   constructor() { }
   ngOnInit() {
-    
+ 
   }
 
 }

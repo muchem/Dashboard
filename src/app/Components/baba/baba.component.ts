@@ -39,26 +39,6 @@ export class BabaComponent implements OnInit {
               borderColor: "#3e95cd",
               backgroundColor:'#3e95cd',
               fill:false
-            },
-            {
-              data: this.intradayHigh,
-              label: "High",
-              pointRadius: 1,
-              lineTension: 0,
-              borderWidth: 2,
-              borderColor: "#47cd5a",
-              backgroundColor:'#47cd5a',
-              fill:false
-            },
-            {
-              data: this.intradayLow,
-              label: "Low",
-              pointRadius: 1,
-              lineTension: 0,
-              borderWidth: 2,
-              borderColor: "#e52436",
-              backgroundColor:'#e52436',
-              fill:false
             }
             
           ]

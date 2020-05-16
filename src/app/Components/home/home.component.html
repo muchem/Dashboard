@@ -1,34 +1,24 @@
-
+<h3 style = "margin:0; color:#454545;">Market Overview</h3>
 <div class = "row">
-    <div class = "col-md-3">
-        <a href="#" routerLink='/Nasdaq Inc./NDAQ'>
+    <div class = "col-md-3" *ngFor = "let profile of companyProfiles">
+        <a href="#" routerLink='/{{profile.name}}/{{profile.ticker}}'>
         <div  class = "stock-box">
-            Nasdaq Inc
+            <h5 style = "margin:0">
+               {{profile.name}}
+            </h5>
+            <p style = "margin:0">
+                <small>
+                Mkt Cap:{{profile.marketCapitalization}}
+                </small>
+            </p>
+            <p style = "margin:0">
+                <small>
+                    O/S Shares:{{profile.shareOutstanding}}
+                </small>
+            </p>
         </div>
     </a>
     </div>
-    <div class = "col-md-3">
-        <a href="#" routerLink='/Barrick Gold Corporation/GOLD'>
-        <div  class = "stock-box">
-           Barrick Gold 
-        </div>
-      </a>
-    </div>
-    <div class = "col-md-3">
-        <a href="#" routerLink='/Dow Inc./DOW'>
-        <div  class = "stock-box">
-            Dow Inc.
-        </div>
-    </a>
-    </div>
-    <div class = "col-md-3">
-        <a href="#" routerLink='/Alibaba Group Holding Limited/BABA'>
-        <div  class = "stock-box">
-            Alibaba Group 
-        </div>
-   </a>
-    </div>
-
 </div>
 <router-outlet></router-outlet>
 <div class = "row">
@@ -51,47 +41,47 @@
             </tr>
             <tr>
                 <td>Energy</td>
-                <td>{{sectorData.Energy}}</td>
+                <td>{{Energy}}</td>
             </tr>
             <tr>
                 <td>Industrials</td>
-                <td>{{sectorData.Industrials}}</td>
+                <td>{{Industrial}}</td>
             </tr>
             <tr>
                 <td>Materials</td>
-                <td>{{sectorData.Materials}}</td>
+                <td>{{Materials}}</td>
             </tr>
             <tr>
                 <td>Consumer Staples</td>
-                <td>{{sectorData['Consumer Staples']}}</td>
+                <td>{{ Staples }}</td>
             </tr>
             <tr>
                 <td>Financials</td>
-                <td>{{sectorData.Financials}}</td>
+                <td>{{Financials}}</td>
             </tr>
             <tr>
                 <td>Utilities</td>
-                <td>{{sectorData.Utilities}}</td>
+                <td>{{Utilities}}</td>
             </tr>
             <tr>
                 <td>Real Estate</td>
-                <td>{{sectorData['Real Estate']}}</td>
+                <td>{{RealEstate}}</td>
             </tr>
             <tr>
                 <td>Consumer Discretionary</td>
-                <td>{{sectorData['Consumer Discretionary']}}</td>
+                <td>{{ Discretionary }}</td>
             </tr>
             <tr>
                 <td>Communication Services</td>
-                <td>{{sectorData['Communication Services']}}</td>
+                <td>{{ CommunicationService }}</td>
             </tr>
             <tr>
                 <td>Information Technology</td>
-                <td>{{sectorData['Information Technology']}}</td>
+                <td>{{ IT }}</td>
             </tr>
             <tr>
                 <td>Health Care</td>
-                <td>{{sectorData['Health Care']}}</td>
+                <td>{{ Healthcare }}</td>
             </tr>
         </table>
     </div>

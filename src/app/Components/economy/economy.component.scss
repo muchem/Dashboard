@@ -1,3 +1,6 @@
+.col-12{
+    padding:0;
+}
 .eco-table{
     width:100%;
     background-color:white;
@@ -30,4 +33,9 @@ td, th {
        
     }
 
+}
+@media screen and (max-width:576px){
+    .col-12{
+        overflow-x:scroll;
+    }
 }

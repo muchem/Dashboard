@@ -130,6 +130,8 @@ export class ResultComponent implements OnInit{
         }
       }
     });
+    console.log("I am really sick of working on this app");
+    console.log("it only works 20% of the time")
    })
     
     this.Service.getDaily(this.CompanySymbol).subscribe(daily =>{
@@ -287,6 +289,9 @@ export class ResultComponent implements OnInit{
     this.Service.getCompanyNews(this.CompanySymbol).subscribe(article =>{
       this.companyNews = article.splice(0,6);
     })
+  }
+  addToWatchList(){
+    localStorage.clear();
   }
 }
  

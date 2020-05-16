@@ -4,10 +4,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
 import { FavortiesComponent } from './Components/favorties/favorties.component';
 import { EconomyComponent } from './Components/economy/economy.component';
-
+import { TestComponent } from './Components/test/test.component';
+import { GoldComponent } from './Components/gold/gold.component';
+import { DowComponent } from './Components/dow/dow.component';
+import { NdaqComponent } from './Components/ndaq/ndaq.component';
+import { BabaComponent } from './Components/baba/baba.component';
 
 const routes: Routes = [
-  { path:'',component:HomeComponent },
+  { path:'',component:HomeComponent,
+  children:[
+    { path:'',component:NdaqComponent },
+    { path:'Nasdaq Inc/NDAQ',component:NdaqComponent },
+    { path:'Barrick Gold Corp/ABX.TO',component:GoldComponent },
+    { path:'Dow Inc/DOW',component:DowComponent },
+    { path:'Alibaba Group Holding Ltd/BABA',component:BabaComponent },
+  ]},
   { path:'favorites',component:FavortiesComponent },
   { path:'result/:companySymbol/:companyName',component: ResultComponent},
   { path:'economy',component:EconomyComponent}

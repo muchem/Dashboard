@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
     this.Service.getAlibabaProfile().subscribe(AlibabaProfile=>[
       this.companyProfiles.push(AlibabaProfile)
     ])
-    console.log(this.companyProfiles)
+  
   }
 
   

@@ -1,0 +1,45 @@
+<div class = "chart-container">
+    <div class = "row">
+        <div class ="col-md-8">
+            <a href = "{{article1Url}}" target = "_blank">
+                <div class = "news-card">
+                  <h3>{{article1Headline}}</h3>
+                  <div class ="img-box" width = "100%" >
+                    <img src = "{{article1Image}}" alt ="image not avaliable" width = "100%">
+                  </div>
+                  <p>
+                    {{ article1Summary }}
+                  </p>
+                </div>
+              </a>
+        </div>
+        <div class = "col-md-4">
+            <a href = "{{article2Url}}" target = "_blank">
+                <div class = "news-card">
+                  <h3>{{article2Headline}}</h3>
+                  <div class ="img-box" width = "100%" >
+                    <img src = "{{article2Image}}" alt ="image not avaliable" width = "100%">
+                  </div>
+                  <p>
+                    {{ article2Summary }}
+                  </p>
+                </div>
+              </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col-md-4 ' *ngFor="let article of newsArticles">
+            <a href = "{{article.url}}" target = "_blank">
+              <div class = "news-card">
+                <h4>{{article.headline}}</h4>
+                <div class ="img-box" width = "90%">
+                  <img src = "{{article.image}}" alt ="image not avaliable"width = "100%">
+                </div>
+                <p>
+                  {{ article.summary }}
+                </p>
+              </div>
+            </a>
+        </div>
+      </div>
+</div>

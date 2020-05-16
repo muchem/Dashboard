@@ -12,11 +12,11 @@ import { AutoSuggestBarComponent } from './Components/auto-suggest-bar/auto-sugg
 import { ResultComponent } from './Components/result/result.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EconomyComponent } from './Components/economy/economy.component';
-import { TestComponent } from './Components/test/test.component';
 import { GoldComponent } from './Components/gold/gold.component';
 import { DowComponent } from './Components/dow/dow.component';
 import { NdaqComponent } from './Components/ndaq/ndaq.component';
 import { BabaComponent } from './Components/baba/baba.component';
+import { NewsComponent } from './Components/news/news.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +26,11 @@ import { BabaComponent } from './Components/baba/baba.component';
     AutoSuggestBarComponent,
     ResultComponent,
     EconomyComponent,
-    TestComponent,
     GoldComponent,
     DowComponent,
     NdaqComponent,
-    BabaComponent
+    BabaComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,

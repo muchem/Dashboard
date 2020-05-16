@@ -48,6 +48,9 @@ export class DataService {
     this.selectedSynbol = { param: symbol }; 
     return this.http.get<any>(`https://finnhub.io/api/v1/company-news?symbol=${this.selectedSynbol.param.updates[0].value}&from=2020-01-01&to=2020-05-01&token=bq3rdo7rh5rb0pdpg08g`);
   }
+  getGeneralNews():Observable<any>{
+    return this.http.get<any>(`https://finnhub.io/api/v1/news?category=general&token=bq3rdo7rh5rb0pdpg08g`);
+  }
   getEconomicCalender():Observable<any>{
     return this.http.get<any>(`https://finnhub.io/api/v1/calendar/economic?token=bq3rdo7rh5rb0pdpg08g`);
   }

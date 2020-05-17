@@ -130,8 +130,6 @@ export class ResultComponent implements OnInit{
         }
       }
     });
-    console.log("I am really sick of working on this app");
-    console.log("it only works 20% of the time")
    })
     
     this.Service.getDaily(this.CompanySymbol).subscribe(daily =>{

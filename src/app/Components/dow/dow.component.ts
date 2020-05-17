@@ -16,6 +16,14 @@ intradayOpen = [];
 intradayHigh = [];
 intradayLow = []
 intraday;
+
+earningCalender;
+quarterlyEspChart = [];
+espCalenderDates = [];
+espEstimates = [];
+espActuals = [];
+trends;
+trendCharts = [];
   ngOnInit() {
     this.Service.getIntradayData('DOW').subscribe(value =>{
       this.intraday = Object.entries(value['Time Series (5min)']).splice(0,78).reverse();
@@ -86,6 +94,104 @@ intraday;
           }
         }
       });
+    })
+    this.Service.getRecommendationTrend('DOW').subscribe(trend =>{
+      this.trends = trend[0];
+      this.trendCharts = new Chart('trendChart',{
+        type:'bar',
+        data:{
+          labels:["Dow Inc."],
+          datasets: [
+            { 
+              data: [this.trends['buy']],
+              label: "Buy",
+              borderColor: "#3e95cd",
+              backgroundColor:'#3e95cd',
+              fill: true
+            },
+            { 
+              data:[ this.trends['hold']],
+              label: "Hold",
+              borderColor: "#de4f98",
+              backgroundColor:'#de4f98',
+              fill: true
+            },
+            { 
+              data:[ this.trends['sell']],
+              label: "Sell",
+              borderColor: "#9a4fde",
+              backgroundColor:'#9a4fde',
+              fill: true
+            },
+            { 
+              data: [this.trends['strongBuy']],
+              label: "Strong Buy",
+              borderColor: "#ffab14",
+              backgroundColor:'#ffab14',
+              fill: true
+            },
+            { 
+              data: [this.trends['strongSell']],
+              label: "Strong Sell",
+              borderColor: "#4b14ff",
+              backgroundColor:"#4b14ff",
+              fill: true
+            }
+          ]
+        },
+        options: {
+          title: {
+						display: true,
+						text: 'Analyst Recomendation'
+          }
+        }
+      })
+    }) 
+    
+    this.Service.getEarningsCalender('DOW').subscribe(calender =>{
+      this.earningCalender = calender['earningsCalendar'];
+      for(let i = 0; i< this.earningCalender.length; i++){
+        this.espCalenderDates.push(this.earningCalender[i].date);
+        this.espActuals.push(this.earningCalender[i].epsActual);
+        this.espEstimates.push(this.earningCalender[i].epsEstimate);
+      }
+      this.quarterlyEspChart = new Chart('espChart', {
+        type:"bar",
+        data:{
+          labels: this.espCalenderDates.reverse(),
+          datasets:[
+            {
+              data: this.espEstimates.reverse(),
+              label: "Estimate",
+              borderColor: "#3e95cd",
+              backgroundColor:'#3e95cd',
+              fill: true
+            },
+            {
+              data: this.espActuals.reverse(),
+              label: "Actual",
+              borderColor: "#ffab14",
+              backgroundColor:'#ffab14',
+              fill: true
+            }
+          ]
+        },
+        options: {
+          title: {
+						display: true,
+						text: 'Earnings Per Share'
+					},
+          scales: {
+            xAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Date (Quarterly)'
+              }
+            }]
+          }
+        }
+      })
     })
   }
 

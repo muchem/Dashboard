@@ -97,7 +97,6 @@ espActuals = [];
   
     this.Service.getRecommendationTrend('NDAQ').subscribe(trend =>{
       this.trends = trend[0];
-      console.log(this.trends);
       this.trendCharts = new Chart('trendChart',{
         type:'bar',
         data:{

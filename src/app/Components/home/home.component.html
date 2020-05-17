@@ -4,9 +4,11 @@
     <div class = "col-md-3" *ngFor = "let profile of companyProfiles">
         <a href="#" routerLink='/{{profile.name}}/{{profile.ticker}}'>
         <div  class = "stock-box">
-            <h5 style = "margin:0">
-               {{profile.name}}
-            </h5>
+            <h6 style = "margin:0;" >
+                <b style = "color:#565656" >
+                    {{profile.name}} 
+                </b>
+            </h6>
             <p style = "margin:0">
                 <small>
                 Mkt Cap:{{profile.marketCapitalization}}
@@ -18,15 +20,12 @@
                 </small>
             </p>
         </div>
-    </a>
+    </a>                                                      
     </div>
 </div>
 <router-outlet></router-outlet>
 <div class = "row">
-    <div class = "col-md-8">
-
-    </div>
-    <div class = "col-md-4">
+    <div class = "col-12">
         <table class = "sector-table">
         <div class = "text-box text-center">
             <h5>U.S. Sectors Performance</h5>

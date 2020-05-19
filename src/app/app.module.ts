@@ -17,6 +17,7 @@ import { DowComponent } from './Components/dow/dow.component';
 import { NdaqComponent } from './Components/ndaq/ndaq.component';
 import { BabaComponent } from './Components/baba/baba.component';
 import { NewsComponent } from './Components/news/news.component';
+import { CryptoComponent } from './Components/crypto/crypto.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NewsComponent } from './Components/news/news.component';
     DowComponent,
     NdaqComponent,
     BabaComponent,
-    NewsComponent
+    NewsComponent,
+    CryptoComponent
   ],
   imports: [
     BrowserModule,

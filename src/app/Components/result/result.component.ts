@@ -12,7 +12,7 @@ import { DataService } from 'src/app/Services/data.service';
 export class ResultComponent implements OnInit{
   CompanyName:string;
   CompanySymbol:string;
-  stockValueChart: [];
+  stockValueChart=[];
   sampleChart =  [];
   trendCharts = [];
   priceTargetChart = [];

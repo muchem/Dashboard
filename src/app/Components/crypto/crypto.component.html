@@ -1,1 +1,25 @@
-<p>crypto works!</p>
+<div class ="row">
+    <div class = "col-md-8">
+        <div class="chart-container" style = "margin-top:0px;"> 
+            <canvas id="BTChart" style = "width:100%;"></canvas>
+           </div>
+    </div>
+</div>
+<div class = "chart-container">
+  <h6><b>Crypto News</b></h6>
+    <div class="row">
+        <div class='col-md-4 ' *ngFor="let article of cryptoArticles">
+            <a href = "{{article.url}}" target = "_blank">
+              <div class = "news-card">
+                <h4>{{article.headline}}</h4>
+                <div class ="img-box" width = "90%">
+                  <img src = "{{article.image}}" alt ="image not avaliable"width = "100%">
+                </div>
+                <p>
+                  {{ article.summary }}
+                </p>
+              </div>
+            </a>
+        </div>
+      </div>
+</div>

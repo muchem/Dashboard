@@ -18,6 +18,7 @@ import { NdaqComponent } from './Components/ndaq/ndaq.component';
 import { BabaComponent } from './Components/baba/baba.component';
 import { NewsComponent } from './Components/news/news.component';
 import { CryptoComponent } from './Components/crypto/crypto.component';
+import { ForexComponent } from './Components/forex/forex.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CryptoComponent } from './Components/crypto/crypto.component';
     NdaqComponent,
     BabaComponent,
     NewsComponent,
-    CryptoComponent
+    CryptoComponent,
+    ForexComponent
   ],
   imports: [
     BrowserModule,

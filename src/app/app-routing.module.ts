@@ -10,6 +10,7 @@ import { NdaqComponent } from './Components/ndaq/ndaq.component';
 import { BabaComponent } from './Components/baba/baba.component';
 import { NewsComponent } from './Components/news/news.component';
 import { CryptoComponent } from './Components/crypto/crypto.component';
+import { ForexComponent } from './Components/forex/forex.component';
 
 const routes: Routes = [
   { path:'',component:HomeComponent,
@@ -21,6 +22,7 @@ const routes: Routes = [
     { path:'Alibaba Group Holding Ltd/BABA',component:BabaComponent },
   ]},
   { path:'Crypto',component:CryptoComponent},
+  {path: 'forex',component:ForexComponent},
   { path:'News',component:NewsComponent},
   { path:'favorites',component:FavortiesComponent },
   { path:'result/:companySymbol/:companyName',component: ResultComponent},

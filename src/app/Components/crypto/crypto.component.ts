@@ -18,7 +18,6 @@ export class CryptoComponent implements OnInit {
   ngOnInit() {
     this.Service.getBitcoinCurrency().subscribe(ob =>{
       this.BTCDaily =  Object.entries(ob['Time Series (Digital Currency Daily)']).splice(0,5);
-      console.log(this.BTCDaily);
       for(let i = 0; i< this.BTCDaily.length; i++){
         this.btcDailyDates.push(this.BTCDaily[i][0]);
         this.BtcDailyValues.push(this.BTCDaily[i][1]['1a. open (USD)']);

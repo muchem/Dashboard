@@ -1,1 +1,18 @@
-<p>forex works!</p>
+<div class = "chart-container">
+    <h6><b>Forex News</b></h6>
+      <div class="row">
+          <div class='col-md-4 ' *ngFor="let article of forexNews">
+              <a href = "{{article.url}}" target = "_blank">
+                <div class = "news-card">
+                  <h4>{{article.headline}}</h4>
+                  <div class ="img-box" width = "90%">
+                    <img src = "{{article.image}}" alt ="image not avaliable"width = "100%">
+                  </div>
+                  <p>
+                    {{ article.summary }}
+                  </p>
+                </div>
+              </a>
+          </div>
+        </div>
+  </div>

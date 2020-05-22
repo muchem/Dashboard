@@ -54,6 +54,9 @@ export class DataService {
   getCryptoNews():Observable<any>{
     return this.http.get<any>(`https://finnhub.io/api/v1/news?category=crypto&token=bq3rdo7rh5rb0pdpg08g`);
   }
+  getForexNews():Observable<any>{
+    return this.http.get<any>(`https://finnhub.io/api/v1/news?category=forex&token=bq3rdo7rh5rb0pdpg08g`)
+  }
   getGeneralNews():Observable<any>{
     return this.http.get<any>(`https://finnhub.io/api/v1/news?category=general&token=bq3rdo7rh5rb0pdpg08g`);
   }

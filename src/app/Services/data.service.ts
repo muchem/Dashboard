@@ -78,4 +78,16 @@ export class DataService {
   getAlibabaProfile():Observable<any>{
     return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=BABA&token=bq3rdo7rh5rb0pdpg08g`);
   }
+  getBtcIndex():Observable<any>{
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=BTC&apikey=UHKM95R37PUMWX1E`)
+  }
+  getLtcIndex():Observable<any>{
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=LTC&apikey=UHKM95R37PUMWX1E`)
+  }
+  getEthIndex():Observable<any>{
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=ETH&apikey=UHKM95R37PUMWX1E`)
+  }
+  getBusdIndex():Observable<any>{
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=BNB&apikey=UHKM95R37PUMWX1E`)
+  }
 }

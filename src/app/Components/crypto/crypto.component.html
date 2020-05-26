@@ -1,4 +1,19 @@
 <div class ="row">
+  <div class = "col-md-4">
+    <div class = "crypto-card" *ngFor = "let index of indexOverviews">
+     <h6 style = "margin:0; color:#454545;"><b>{{index['2. name']}}</b></h6>
+  <p style = "margin:0">
+      <small>
+        Developer Score:{{index['5. developer score']}}
+      </small>
+  </p>
+  <p style = "margin:0">
+    <small>
+      Rating:{{index['3. fcas rating']}}
+    </small>
+</p>
+    </div>
+  </div>
     <div class = "col-md-8">
         <div class="chart-container" style = "margin-top:0px;"> 
             <canvas id="BTChart" style = "width:100%;"></canvas>

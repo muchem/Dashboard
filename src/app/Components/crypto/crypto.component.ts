@@ -12,6 +12,7 @@ export class CryptoComponent implements OnInit {
   btcDailyDates = [];
   BtcDailyValues = [];
 
+  indexOverviews = [];
   cryptoArticles;
   constructor(private Service:DataService) { }
 
@@ -82,10 +83,22 @@ export class CryptoComponent implements OnInit {
         }
     })
   });
+  this.Service.getBtcIndex().subscribe(btcIndex =>{
+    this.indexOverviews.push(btcIndex['Crypto Rating (FCAS)']);
+  })
+  this.Service.getLtcIndex().subscribe(ltcIndex =>{
+    this.indexOverviews.push(ltcIndex['Crypto Rating (FCAS)']);
+  })
+  this.Service.getEthIndex().subscribe(ethIndex =>{
+    this.indexOverviews.push(ethIndex['Crypto Rating (FCAS)'])
+  })
+  this.Service.getBusdIndex().subscribe(BusdIndex =>{
+    this.indexOverviews.push(BusdIndex['Crypto Rating (FCAS)'])
+  })
   this.Service.getCryptoNews().subscribe(articles =>{
     this.cryptoArticles = articles.splice(1,18);
- 
   })
+  console.log(this.indexOverviews);
   }
 
 }

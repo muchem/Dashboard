@@ -11,7 +11,10 @@ import { BabaComponent } from './Components/baba/baba.component';
 import { NewsComponent } from './Components/news/news.component';
 import { CryptoComponent } from './Components/crypto/crypto.component';
 import { ForexComponent } from './Components/forex/forex.component';
-
+import { BtcComponent, } from './Components/btc/btc.component';
+import { LtcComponent } from './Components/ltc/ltc.component';
+import { EthComponent } from './Components/eth/eth.component';
+import { BnbComponent } from './Components/bnb/bnb.component';
 const routes: Routes = [
   { path:'',component:HomeComponent,
   children:[
@@ -21,12 +24,20 @@ const routes: Routes = [
     { path:'Dow Inc/DOW',component:DowComponent },
     { path:'Alibaba Group Holding Ltd/BABA',component:BabaComponent },
   ]},
-  { path:'Crypto',component:CryptoComponent},
-  {path: 'forex',component:ForexComponent},
+  { path:'',component:CryptoComponent,
+  children:[
+   { path:'Crypto',component:BtcComponent },
+   { path:'Crypto/Bitcoin/BTC',component:BtcComponent},
+   { path:'Crypto/Litecoin/LTC',component:LtcComponent },
+   { path:'Crypto/Ethereum/ETH',component:EthComponent },
+   { path:'Crypto/Binance Coin/BNB',component:BnbComponent },
+ ]},
   { path:'News',component:NewsComponent},
-  { path:'favorites',component:FavortiesComponent },
+  {path: 'forex',component:ForexComponent},
+  { path:'economy',component:EconomyComponent},
+  { path:'favorites',component:FavortiesComponent },     
   { path:'result/:companySymbol/:companyName',component: ResultComponent},
-  { path:'economy',component:EconomyComponent}
+
 ];
 
 @NgModule({

@@ -48,8 +48,10 @@ export class DataService {
     this.selectedSynbol = { param: symbol }; 
     return this.http.get<any>(`https://finnhub.io/api/v1/company-news?symbol=${this.selectedSynbol.param.updates[0].value}&from=2020-01-01&to=2020-05-01&token=bq3rdo7rh5rb0pdpg08g`);
   }
-  getBitcoinCurrency():Observable<any>{
-    return this.http.get<any>(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=BTC&market=USD&apikey=UHKM95R37PUMWX1E`);
+  getCryptoCurrency(companySymbol:string):Observable<any>{
+    let symbol= new HttpParams().set('symbol',companySymbol);
+    this.selectedSynbol = { param: symbol }; 
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${this.selectedSynbol.param.updates[0].value}&market=USD&apikey=UHKM95R37PUMWX1E`);
   }
   getCryptoNews():Observable<any>{
     return this.http.get<any>(`https://finnhub.io/api/v1/news?category=crypto&token=bq3rdo7rh5rb0pdpg08g`);

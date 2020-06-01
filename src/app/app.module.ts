@@ -19,6 +19,10 @@ import { BabaComponent } from './Components/baba/baba.component';
 import { NewsComponent } from './Components/news/news.component';
 import { CryptoComponent } from './Components/crypto/crypto.component';
 import { ForexComponent } from './Components/forex/forex.component';
+import { BtcComponent } from './Components/btc/btc.component';
+import { LtcComponent } from './Components/ltc/ltc.component';
+import { EthComponent } from './Components/eth/eth.component';
+import { BnbComponent } from './Components/bnb/bnb.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { ForexComponent } from './Components/forex/forex.component';
     BabaComponent,
     NewsComponent,
     CryptoComponent,
-    ForexComponent
+    ForexComponent,
+    BtcComponent,
+    LtcComponent,
+    EthComponent,
+    BnbComponent
   ],
   imports: [
     BrowserModule,

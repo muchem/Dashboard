@@ -1,8 +1,9 @@
 <div class ="row">
   <div class = "col-md-4">
     <div class = "crypto-card" *ngFor = "let index of indexOverviews">
+      <a href="#" routerLink="/Crypto/{{index['2. name']}}/{{index['1. symbol']}}">
      <h6 style = "margin:0; color:#454545;"><b>{{index['2. name']}}</b></h6>
-  <p style = "margin:0">
+     <p style = "margin:0">
       <small>
         Developer Score:{{index['5. developer score']}}
       </small>
@@ -12,14 +13,14 @@
       Rating:{{index['3. fcas rating']}}
     </small>
 </p>
+</a>
     </div>
+
   </div>
     <div class = "col-md-8">
-        <div class="chart-container" style = "margin-top:0px;"> 
-            <canvas id="BTChart" style = "width:100%;"></canvas>
-           </div>
+      <router-outlet></router-outlet>
     </div>
-</div>
+</div> 
 <div class = "chart-container">
   <h6><b>Crypto News</b></h6>
     <div class="row">

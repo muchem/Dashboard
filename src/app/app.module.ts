@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -53,7 +54,7 @@ import { BnbComponent } from './Components/bnb/bnb.component';
     StorageServiceModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DailyAdjustedResolver ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

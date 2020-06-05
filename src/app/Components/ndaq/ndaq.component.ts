@@ -94,7 +94,6 @@ espActuals = [];
         }
       });
     })
-  
     this.Service.getRecommendationTrend('NDAQ').subscribe(trend =>{
       this.trends = trend[0];
       this.trendCharts = new Chart('trendChart',{

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { delay } from "rxjs/operators";  
 @Injectable({
   providedIn: 'root'
 })
@@ -16,12 +16,12 @@ export class DataService {
   getIntradayData(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('symbol',companySymbol);
     this.selectedSynbol = { param: symbol };
-    return this.http.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.selectedSynbol.param.updates[0].value}&interval=5min&apikey=UHKM95R37PUMWX1E`);
+    return this.http.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.selectedSynbol.param.updates[0].value}&interval=5min&apikey=UHKM95R37PUMWX1E`).pipe(delay(1000));
   }
   getDaily(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('symbol',companySymbol);
     this.selectedSynbol = { param: symbol };
-    return this.http.get<any>(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${this.selectedSynbol.param.updates[0].value}&apikey=UHKM95R37PUMWX1E`);
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${this.selectedSynbol.param.updates[0].value}&apikey=UHKM95R37PUMWX1E`).pipe(delay(1000));
   }
   getRecommendationTrend(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('symbol',companySymbol);

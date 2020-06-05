@@ -39,19 +39,16 @@ export class ResultComponent implements OnInit{
   companyNews;
   majorDevelopments;
 
-  constructor(private route:ActivatedRoute,private Service:DataService) {
-    this.route.data.subscribe(daily =>{
-      this.dailyAdjusted =  Object.entries(daily['dailyAdjusted']['Time Series (Daily)']).splice(0,4);
-    })
-  }
+  constructor(private route:ActivatedRoute,private Service:DataService) {}
   ngOnInit() {
  this.route.paramMap.subscribe(params => {
       this.CompanyName = params.get('companyName');
       this.CompanySymbol = params.get('companySymbol');
     });
-  
- this.Service.getIntradayData(this.CompanySymbol).subscribe( value =>{
-    this.intraday = Object.entries(value['Time Series (5min)']).splice(0,78).reverse();
+   /* this.route.data.subscribe(daily =>{
+      this.dailyAdjusted =  Object.entries(daily['dailyAdjusted']['Time Series (Daily)']).splice(0,4);
+    })*/
+    this.intraday = Object.entries(this.route.snapshot.data['intraday']['Time Series (5min)']).splice(0,78).reverse();
     for(let i = 0; i<this.intraday.length; i++){
       this.intradayTime.push(this.intraday[i][0 ]);
       this.intradayOpen.push(this.intraday[i][1]["1. open"]);
@@ -102,15 +99,15 @@ export class ResultComponent implements OnInit{
             display: true,
             offset: true,
             ticks: { 
-							major: {
-								enabled: true,
-								fontStyle: 'bold'
-							},
-							source: 'data',
-							autoSkip: true,
-							autoSkipPadding: 75,
-							maxRotation: 0,
-							sampleSize: 79
+              major: {
+                enabled: true,
+                fontStyle: 'bold'
+              },
+              source: 'data',
+              autoSkip: true,
+              autoSkipPadding: 75,
+              maxRotation: 0,
+              sampleSize: 79
             },
             
             scaleLabel: {
@@ -119,23 +116,13 @@ export class ResultComponent implements OnInit{
             }
           }]
         }
-      },
-      tooltips: {
-        intersect: false,
-        mode: 'index',
-        callbacks: {
-          label: function(tooltipItem, myData) {
-            var label = myData.datasets[tooltipItem.datasetIndex].label || '';
-            if (label) {
-              label += ': ';
-            }
-            label += parseFloat(tooltipItem.value).toFixed(2);
-            return label;
-          }
-        }
       }
     });
-   })
+    this.dailyAdjusted = Object.entries(this.route.snapshot.data['dailyAdjusted']['Time Series (Daily)']).splice(0,4);
+ /*this.Service.getIntradayData(this.CompanySymbol).subscribe( value =>{
+    this.intraday = Object.entries(value['Time Series (5min)']).splice(0,78).reverse();
+   
+   })*/
  
     this.Service.getRecommendationTrend(this.CompanySymbol).subscribe(trend =>{
       this.trends = trend[0];

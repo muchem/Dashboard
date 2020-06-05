@@ -32,7 +32,6 @@ export class NewsComponent implements OnInit {
     this.article2Image = article[1].image;
     this.article2Summary = article[1].summary;
     this.newsArticles = article.splice(2,15);
-     console.log(this.newsArticles)
     })
   }
 

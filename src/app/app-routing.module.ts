@@ -15,7 +15,8 @@ import { BtcComponent, } from './Components/btc/btc.component';
 import { LtcComponent } from './Components/ltc/ltc.component';
 import { EthComponent } from './Components/eth/eth.component';
 import { BnbComponent } from './Components/bnb/bnb.component';
-import {DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
+import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
+import { IntradayResolverService } from './Services/Result-Component-Resolvers/intraday-resolver.service';
 const routes: Routes = [
   { path:'',component:HomeComponent,
   children:[
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path:'favorites',component:FavortiesComponent },     
   { path:'result/:companySymbol/:companyName',component: ResultComponent,
     resolve:{
+      intraday:IntradayResolverService,
       dailyAdjusted:DailyAdjustedResolver
     }
 },

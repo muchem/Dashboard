@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NasdaqIntradayResolverService } from './Services/Home-Component-Resolvers/nasdaq-intraday-resolver.service';
 import { IntradayResolverService } from './Services/Result-Component-Resolvers/intraday-resolver.service';
 import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
 import { StorageServiceModule } from 'ngx-webstorage-service';
@@ -25,7 +26,7 @@ import { BtcComponent } from './Components/btc/btc.component';
 import { LtcComponent } from './Components/ltc/ltc.component';
 import { EthComponent } from './Components/eth/eth.component';
 import { BnbComponent } from './Components/bnb/bnb.component';
-
+import { SlimLoadingBarModule  } from 'ng2-slim-loading-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,9 +54,10 @@ import { BnbComponent } from './Components/bnb/bnb.component';
     FormsModule,
     ReactiveFormsModule,
     StorageServiceModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SlimLoadingBarModule.forRoot()  
   ],
-  providers: [DailyAdjustedResolver,IntradayResolverService ],
+  providers: [DailyAdjustedResolver,IntradayResolverService, NasdaqIntradayResolverService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

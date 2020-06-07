@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,8 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 export class DailyAdjustedResolver implements Resolve<any>{
   constructor(private Service:DataService) {}
   resolve(route:ActivatedRouteSnapshot):Observable<any[]>{
-    return this.Service.getDaily(route.paramMap.get('companySymbol'));
+    return this.Service.getDaily(route.paramMap.get('companySymbol')).catch(() => {
+      return Observable.of('data not available');
+    });
   }
 }

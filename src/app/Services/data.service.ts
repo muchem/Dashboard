@@ -36,7 +36,7 @@ export class DataService {
   getRevenue(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('symbol',companySymbol);
     this.selectedSynbol = { param: symbol }; 
-    return this.http.get<any>(`https://finnhub.io/api/v1/calendar/earnings?from=2018-01-01&symbol=${this.selectedSynbol.param.updates[0].value}&token=bq3rdo7rh5rb0pdpg08g`);
+    return this.http.get<any>(`https://finnhub.io/api/v1/calendar/earnings?symbol=${this.selectedSynbol.param.updates[0].value}&from=2018-01-01&&token=bq3rdo7rh5rb0pdpg08g`);
   }
   getEarningsCalender(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('symbol',companySymbol);

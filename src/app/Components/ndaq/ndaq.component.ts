@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
+import { ActivatedRoute } from '@angular/router';
 import { Chart } from 'chart.js';
 @Component({
   selector: 'app-ndaq',
@@ -8,7 +9,9 @@ import { Chart } from 'chart.js';
 })
 export class NdaqComponent implements OnInit {
 
-  constructor(private Service:DataService) { }
+  constructor(private route:ActivatedRoute,private Service:DataService) {
+    this.intraday = Object.entries(this.route.snapshot.data['intraday']['Time Series (5min)']).splice(0,78).reverse();
+   }
 CompanySymbol:string;
 Intrachart = [];
 intradayTime = [];
@@ -24,8 +27,6 @@ espCalenderDates = [];
 espEstimates = [];
 espActuals = [];
   ngOnInit() {
-    this.Service.getIntradayData('NDAQ').subscribe(value =>{
-      this.intraday = Object.entries(value['Time Series (5min)']).splice(0,78).reverse();
       for(let i = 0; i<this.intraday.length; i++){
         this.intradayTime.push(this.intraday[i][0]);
         this.intradayOpen.push(this.intraday[i][1]["1. open"])
@@ -77,23 +78,9 @@ espActuals = [];
               }
             }]
           }
-        },
-        tooltips: {
-          intersect: false,
-          mode: 'index',
-          callbacks: {
-            label: function(tooltipItem, myData) {
-              var label = myData.datasets[tooltipItem.datasetIndex].label || '';
-              if (label) {
-                label += ': ';
-              }
-              label += parseFloat(tooltipItem.value).toFixed(2);
-              return label;
-            }
-          }
         }
       });
-    })
+
     this.Service.getRecommendationTrend('NDAQ').subscribe(trend =>{
       this.trends = trend[0];
       this.trendCharts = new Chart('trendChart',{

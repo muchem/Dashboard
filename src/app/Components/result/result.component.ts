@@ -39,15 +39,15 @@ export class ResultComponent implements OnInit{
   companyNews;
   majorDevelopments;
 
-  constructor(private route:ActivatedRoute,private Service:DataService) {}
+  constructor(private route:ActivatedRoute,private Service:DataService) {
+    this.intraday = Object.entries(this.route.snapshot.data['intraday']['Time Series (5min)']).splice(0,78).reverse();
+    this.dailyAdjusted = Object.entries(this.route.snapshot.data['dailyAdjusted']['Time Series (Daily)']).splice(0,4);
+  }
   ngOnInit() {
  this.route.paramMap.subscribe(params => {
       this.CompanyName = params.get('companyName');
       this.CompanySymbol = params.get('companySymbol');
     });
-   /* this.route.data.subscribe(daily =>{
-      this.dailyAdjusted =  Object.entries(daily['dailyAdjusted']['Time Series (Daily)']).splice(0,4);
-    })*/
     this.intraday = Object.entries(this.route.snapshot.data['intraday']['Time Series (5min)']).splice(0,78).reverse();
     for(let i = 0; i<this.intraday.length; i++){
       this.intradayTime.push(this.intraday[i][0 ]);
@@ -118,12 +118,7 @@ export class ResultComponent implements OnInit{
         }
       }
     });
-    this.dailyAdjusted = Object.entries(this.route.snapshot.data['dailyAdjusted']['Time Series (Daily)']).splice(0,4);
- /*this.Service.getIntradayData(this.CompanySymbol).subscribe( value =>{
-    this.intraday = Object.entries(value['Time Series (5min)']).splice(0,78).reverse();
-   
-   })*/
- 
+  
     this.Service.getRecommendationTrend(this.CompanySymbol).subscribe(trend =>{
       this.trends = trend[0];
       this.trendCharts = new Chart('trendChart',{

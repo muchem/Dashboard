@@ -17,11 +17,20 @@ import { EthComponent } from './Components/eth/eth.component';
 import { BnbComponent } from './Components/bnb/bnb.component';
 import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
 import { IntradayResolverService } from './Services/Result-Component-Resolvers/intraday-resolver.service';
+import { NasdaqIntradayResolverService } from './Services/Home-Component-Resolvers/nasdaq-intraday-resolver.service';
 const routes: Routes = [
   { path:'',component:HomeComponent,
   children:[
-    { path:'',component:NdaqComponent },
-    { path:'Nasdaq Inc/NDAQ',component:NdaqComponent },
+    { path:'',component:NdaqComponent,
+      resolve:{
+        intraday:NasdaqIntradayResolverService
+      }
+  },
+    { path:'Nasdaq Inc/NDAQ',component:NdaqComponent,
+      resolve:{
+        intraday:NasdaqIntradayResolverService
+        }
+    },
     { path:'Barrick Gold Corp/ABX.TO',component:GoldComponent },
     { path:'Dow Inc/DOW',component:DowComponent },
     { path:'Alibaba Group Holding Ltd/BABA',component:BabaComponent },

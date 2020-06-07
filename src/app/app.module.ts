@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NasdaqIntradayResolverService } from './Services/Home-Component-Resolvers/nasdaq-intraday-resolver.service';
+import { NasdaqProfileResolverService } from './Services/Home-Component-Resolvers/nasdaq-profile-resolver.service';
+import { GoldProfileResolverService } from './Services/Home-Component-Resolvers/gold-profile-resolver.service';
+import { DowProfileResolverService } from './Services/Home-Component-Resolvers/dow-profile-resolver.service';
+import { AlibabaProfileResolverService } from './Services/Home-Component-Resolvers/alibaba-profile-resolver.service';
 import { IntradayResolverService } from './Services/Result-Component-Resolvers/intraday-resolver.service';
 import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
 import { StorageServiceModule } from 'ngx-webstorage-service';
@@ -57,7 +61,9 @@ import { SlimLoadingBarModule  } from 'ng2-slim-loading-bar';
     BrowserAnimationsModule,
     SlimLoadingBarModule.forRoot()  
   ],
-  providers: [DailyAdjustedResolver,IntradayResolverService, NasdaqIntradayResolverService ],
+  providers: [DailyAdjustedResolver,IntradayResolverService, NasdaqIntradayResolverService,
+  NasdaqIntradayResolverService,GoldProfileResolverService,DowProfileResolverService,
+  AlibabaProfileResolverService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

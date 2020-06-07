@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,7 +22,17 @@ export class HomeComponent implements OnInit {
   CommunicationService;
   IT;
   Healthcare;
-  constructor(private Service:DataService){}
+
+  NasdaqProfile;
+  GoldProfile;
+  DowProfile;
+  AlibabaProfile;
+  constructor(private Service:DataService,private route:ActivatedRoute,){
+    this.NasdaqProfile = this.route.snapshot.data['NasdaqProfile'];
+    this.GoldProfile = this.route.snapshot.data['GoldProfile'];
+    this.DowProfile = this.route.snapshot.data['DowProfile'];
+    this.AlibabaProfile = this.route.snapshot.data['AlibabaProfile'];
+  }
 
   ngOnInit() {
     this.Service.getSectorPerformances().subscribe(sector =>{
@@ -41,19 +51,11 @@ export class HomeComponent implements OnInit {
         this.Healthcare = this.sectorData['Health Care']
   
     })
-    this.Service.getNasdaqProfile().subscribe(NasdaqProfile =>{
-     this.companyProfiles.push(NasdaqProfile);
-    })
-    this.Service.getGoldProfile().subscribe(GoldProfile =>{
-      this.companyProfiles.push(GoldProfile)
-    })
-    this.Service.getDowProfile().subscribe(DowProfile =>{
-      this.companyProfiles.push(DowProfile)
-    })
-    this.Service.getAlibabaProfile().subscribe(AlibabaProfile=>[
-      this.companyProfiles.push(AlibabaProfile)
-    ])
-  
+     this.companyProfiles.push(this.NasdaqProfile);
+      this.companyProfiles.push(this.GoldProfile)
+      this.companyProfiles.push(this.DowProfile)
+      this.companyProfiles.push(this.AlibabaProfile)
+
   }
 
   

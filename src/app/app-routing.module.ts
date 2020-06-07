@@ -18,8 +18,18 @@ import { BnbComponent } from './Components/bnb/bnb.component';
 import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
 import { IntradayResolverService } from './Services/Result-Component-Resolvers/intraday-resolver.service';
 import { NasdaqIntradayResolverService } from './Services/Home-Component-Resolvers/nasdaq-intraday-resolver.service';
+import { NasdaqProfileResolverService } from './Services/Home-Component-Resolvers/nasdaq-profile-resolver.service';
+import { GoldProfileResolverService } from './Services/Home-Component-Resolvers/gold-profile-resolver.service';
+import { DowProfileResolverService } from './Services/Home-Component-Resolvers/dow-profile-resolver.service';
+import { AlibabaProfileResolverService } from './Services/Home-Component-Resolvers/alibaba-profile-resolver.service';
 const routes: Routes = [
   { path:'',component:HomeComponent,
+   resolve:{
+    NasdaqProfile:NasdaqProfileResolverService,
+    GoldProfile:GoldProfileResolverService,
+    DowProfile:DowProfileResolverService,
+    AlibabaProfile:AlibabaProfileResolverService
+   },
   children:[
     { path:'',component:NdaqComponent,
       resolve:{

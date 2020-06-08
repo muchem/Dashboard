@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/Services/data.service';
 import { Chart } from 'chart.js';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-eth',
   templateUrl: './eth.component.html',
   styleUrls: ['./eth.component.scss']
 })
 export class EthComponent implements OnInit {
-
-  constructor(private Service :DataService) { }
   cryptoDaily;
   dailyDates = [];
   dailyValues = [];
   dailyChart = []
+  constructor(private route:ActivatedRoute) {
+    this.cryptoDaily = Object.entries(this.route.snapshot.data['cryptoDaily']['Time Series (Digital Currency Daily)']).splice(0,5);
+   }
   ngOnInit() {
-    this.Service.getCryptoCurrency("ETH").subscribe(obj =>{
-      this.cryptoDaily = Object.entries(obj['Time Series (Digital Currency Daily)']).splice(0,5);
       for(let i = 0; i< this.cryptoDaily.length; i++){
         this.dailyDates.push(this.cryptoDaily[i][0]);
         this.dailyValues.push(this.cryptoDaily[i][1]['1a. open (USD)']);
@@ -63,22 +62,7 @@ export class EthComponent implements OnInit {
               }
             }]
           }
-        },
-        tooltips: {
-          intersect: false,
-          mode: 'index',
-          callbacks: {
-            label: function(tooltipItem, myData) {
-              var label = myData.datasets[tooltipItem.datasetIndex].label || '';
-              if (label) {
-                label += ': ';
-              }
-              label += parseFloat(tooltipItem.value).toFixed(2);
-              return label;
-            }
-          }
         }
-    })
     })
   }
 

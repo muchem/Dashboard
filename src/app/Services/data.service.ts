@@ -51,7 +51,7 @@ export class DataService {
   getCryptoCurrency(companySymbol:string):Observable<any>{
     let symbol= new HttpParams().set('symbol',companySymbol);
     this.selectedSynbol = { param: symbol }; 
-    return this.http.get<any>(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${this.selectedSynbol.param.updates[0].value}&market=USD&apikey=UHKM95R37PUMWX1E`);
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${this.selectedSynbol.param.updates[0].value}&market=USD&apikey=UHKM95R37PUMWX1E`).pipe(delay(1000));;
   }
   getCryptoNews():Observable<any>{
     return this.http.get<any>(`https://finnhub.io/api/v1/news?category=crypto&token=bq3rdo7rh5rb0pdpg08g`);
@@ -81,15 +81,15 @@ export class DataService {
     return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=BABA&token=bq3rdo7rh5rb0pdpg08g`).pipe(delay(1000));
   }
   getBtcIndex():Observable<any>{
-    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=BTC&apikey=UHKM95R37PUMWX1E`)
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=BTC&apikey=UHKM95R37PUMWX1E`).pipe(delay(1000));
   }
   getLtcIndex():Observable<any>{
-    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=LTC&apikey=UHKM95R37PUMWX1E`)
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=LTC&apikey=UHKM95R37PUMWX1E`).pipe(delay(1000));
   }
   getEthIndex():Observable<any>{
-    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=ETH&apikey=UHKM95R37PUMWX1E`)
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=ETH&apikey=UHKM95R37PUMWX1E`).pipe(delay(1000));
   }
   getBusdIndex():Observable<any>{
-    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=BNB&apikey=UHKM95R37PUMWX1E`)
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=BNB&apikey=UHKM95R37PUMWX1E`).pipe(delay(1000));
   }
 }

@@ -27,6 +27,10 @@ import { BitcoinProfileResolverService } from './Services/Crypto-Component-Resol
 import { LitecoinProfileResolverService } from './Services/Crypto-Component-Resolvers/litecoin-profile-resolver.service';
 import { BinanceCoinProfileResolverService } from './Services/Crypto-Component-Resolvers/binance-coin-profile-resolver.service';
 import { EthereumProfileResolverService } from './Services/Crypto-Component-Resolvers/ethereum-profile-resolver.service';
+import { BitcoinDailyResolverService } from './Services/Crypto-Component-Resolvers/bitcoin-daily-resolver.service';
+import { LitecoinDailyResolverService } from './Services/Crypto-Component-Resolvers/litecoin-daily-resolver.service';
+import { BinanceCoinDailyResolverService } from './Services/Crypto-Component-Resolvers/binance-coin-daily-resolver.service';
+import {  EthereumDailyResolverService } from './Services/Crypto-Component-Resolvers/ethereum-daily-resolver.service';
 const routes: Routes = [
   { path:'',component:HomeComponent,
    resolve:{
@@ -59,11 +63,31 @@ const routes: Routes = [
       BusdIndex:BinanceCoinProfileResolverService
     },
   children:[
-   { path:'Crypto',component:BtcComponent },
-   { path:'Crypto/Bitcoin/BTC',component:BtcComponent},
-   { path:'Crypto/Litecoin/LTC',component:LtcComponent },
-   { path:'Crypto/Ethereum/ETH',component:EthComponent },
-   { path:'Crypto/Binance Coin/BNB',component:BnbComponent },
+   { path:'Crypto',component:BtcComponent,
+    resolve:{
+      cryptoDaily:BitcoinDailyResolverService
+    } 
+  },
+   { path:'Crypto/Bitcoin/BTC',component:BtcComponent,
+    resolve:{
+      cryptoDaily:BitcoinDailyResolverService
+    }
+  },
+   { path:'Crypto/Litecoin/LTC',component:LtcComponent,
+    resolve:{
+      cryptoDaily:LitecoinDailyResolverService
+    }
+  },
+   { path:'Crypto/Ethereum/ETH',component:EthComponent,
+    resolve:{
+      cryptoDaily:EthereumDailyResolverService
+    }
+  },
+   { path:'Crypto/Binance Coin/BNB',component:BnbComponent,
+    resolve:{
+      cryptoDaily:BinanceCoinDailyResolverService
+    }
+  },
  ]},
   { path:'News',component:NewsComponent},
   {path: 'forex',component:ForexComponent},

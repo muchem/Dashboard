@@ -10,6 +10,10 @@ import { BitcoinProfileResolverService } from './Services/Crypto-Component-Resol
 import { LitecoinProfileResolverService } from './Services/Crypto-Component-Resolvers/litecoin-profile-resolver.service';
 import { BinanceCoinProfileResolverService } from './Services/Crypto-Component-Resolvers/binance-coin-profile-resolver.service';
 import { EthereumProfileResolverService } from './Services/Crypto-Component-Resolvers/ethereum-profile-resolver.service';
+import { BitcoinDailyResolverService } from './Services/Crypto-Component-Resolvers/bitcoin-daily-resolver.service';
+import { LitecoinDailyResolverService } from './Services/Crypto-Component-Resolvers/litecoin-daily-resolver.service';
+import { BinanceCoinDailyResolverService } from './Services/Crypto-Component-Resolvers/binance-coin-daily-resolver.service';
+import {  EthereumDailyResolverService } from './Services/Crypto-Component-Resolvers/ethereum-daily-resolver.service';
 import { IntradayResolverService } from './Services/Result-Component-Resolvers/intraday-resolver.service';
 import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
 import { StorageServiceModule } from 'ngx-webstorage-service';
@@ -70,7 +74,9 @@ import { SlimLoadingBarModule  } from 'ng2-slim-loading-bar';
   NasdaqProfileResolverService,GoldProfileResolverService,DowProfileResolverService,
   AlibabaProfileResolverService, UsSectorResolverService,
   BitcoinProfileResolverService,LitecoinProfileResolverService,
-BinanceCoinProfileResolverService,EthereumProfileResolverService ],
+  BinanceCoinProfileResolverService,EthereumProfileResolverService,
+  BitcoinDailyResolverService,LitecoinDailyResolverService,
+  BinanceCoinDailyResolverService,EthereumDailyResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

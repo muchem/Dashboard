@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/Services/data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-economy',
@@ -8,13 +8,10 @@ import { DataService } from 'src/app/Services/data.service';
 })
 export class EconomyComponent implements OnInit {
   EconomicCalender;
-  constructor(private Service:DataService) { }
+  constructor(private route:ActivatedRoute) {
+    this.EconomicCalender = this.route.snapshot.data['EconomicCalender']['economicCalendar']['result'];
+   }
 
-  ngOnInit() {
-    this.Service.getEconomicCalender().subscribe(event =>{
-      this.EconomicCalender = event['economicCalendar']['result'];
-  
-    })
-  }
+  ngOnInit() {}
 
 }

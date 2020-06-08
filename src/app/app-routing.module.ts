@@ -31,6 +31,7 @@ import { BitcoinDailyResolverService } from './Services/Crypto-Component-Resolve
 import { LitecoinDailyResolverService } from './Services/Crypto-Component-Resolvers/litecoin-daily-resolver.service';
 import { BinanceCoinDailyResolverService } from './Services/Crypto-Component-Resolvers/binance-coin-daily-resolver.service';
 import {  EthereumDailyResolverService } from './Services/Crypto-Component-Resolvers/ethereum-daily-resolver.service';
+import { EconomicCalenderResolverService } from './Services/Economy-Component-Resolvers/economic-calender-resolver.service'
 const routes: Routes = [
   { path:'',component:HomeComponent,
    resolve:{
@@ -91,7 +92,11 @@ const routes: Routes = [
  ]},
   { path:'News',component:NewsComponent},
   {path: 'forex',component:ForexComponent},
-  { path:'economy',component:EconomyComponent},
+  { path:'economy',component:EconomyComponent,
+     resolve:{
+      EconomicCalender:EconomicCalenderResolverService
+  }
+},
   { path:'favorites',component:FavortiesComponent },     
   { path:'result/:companySymbol/:companyName',component: ResultComponent,
     resolve:{

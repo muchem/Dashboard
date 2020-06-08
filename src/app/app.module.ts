@@ -16,6 +16,7 @@ import { BinanceCoinDailyResolverService } from './Services/Crypto-Component-Res
 import {  EthereumDailyResolverService } from './Services/Crypto-Component-Resolvers/ethereum-daily-resolver.service';
 import { IntradayResolverService } from './Services/Result-Component-Resolvers/intraday-resolver.service';
 import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
+import { EconomicCalenderResolverService } from './Services/Economy-Component-Resolvers/economic-calender-resolver.service'
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -76,7 +77,7 @@ import { SlimLoadingBarModule  } from 'ng2-slim-loading-bar';
   BitcoinProfileResolverService,LitecoinProfileResolverService,
   BinanceCoinProfileResolverService,EthereumProfileResolverService,
   BitcoinDailyResolverService,LitecoinDailyResolverService,
-  BinanceCoinDailyResolverService,EthereumDailyResolverService],
+  BinanceCoinDailyResolverService,EthereumDailyResolverService, EconomicCalenderResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

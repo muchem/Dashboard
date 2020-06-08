@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-crypto',
   templateUrl: './crypto.component.html',
@@ -8,22 +9,24 @@ import { DataService } from 'src/app/Services/data.service';
 export class CryptoComponent implements OnInit {
   indexOverviews = [];
   cryptoArticles;
-  constructor(private Service:DataService) { }
+  btcIndex;
+  ltcIndex;
+  ethIndex;
+  BusdIndex;
+  constructor(private Service:DataService,private route:ActivatedRoute) { 
+    this.btcIndex = this.route.snapshot.data['btcIndex']['Crypto Rating (FCAS)'];
+    this.ltcIndex = this.route.snapshot.data['ltcIndex']['Crypto Rating (FCAS)'];
+    this.BusdIndex = this.route.snapshot.data['BusdIndex']['Crypto Rating (FCAS)'];
+    this.ethIndex = this.route.snapshot.data['ethIndex']['Crypto Rating (FCAS)'];
+   
+  }
 
   ngOnInit() {
+  this.indexOverviews.push(this.btcIndex);
+  this.indexOverviews.push(this.ltcIndex);
+  this.indexOverviews.push(this.BusdIndex);
+  this.indexOverviews.push(this.ethIndex);
 
-  this.Service.getBtcIndex().subscribe(btcIndex =>{
-    this.indexOverviews.push(btcIndex['Crypto Rating (FCAS)']);
-  })
-  this.Service.getLtcIndex().subscribe(ltcIndex =>{
-    this.indexOverviews.push(ltcIndex['Crypto Rating (FCAS)']);
-  })
-  this.Service.getEthIndex().subscribe(ethIndex =>{
-    this.indexOverviews.push(ethIndex['Crypto Rating (FCAS)'])
-  })
-  this.Service.getBusdIndex().subscribe(BusdIndex =>{
-    this.indexOverviews.push(BusdIndex['Crypto Rating (FCAS)'])
-  })
   this.Service.getCryptoNews().subscribe(articles =>{
     this.cryptoArticles = articles.splice(1,18);
   })

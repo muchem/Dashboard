@@ -5,6 +5,11 @@ import { NasdaqProfileResolverService } from './Services/Home-Component-Resolver
 import { GoldProfileResolverService } from './Services/Home-Component-Resolvers/gold-profile-resolver.service';
 import { DowProfileResolverService } from './Services/Home-Component-Resolvers/dow-profile-resolver.service';
 import { AlibabaProfileResolverService } from './Services/Home-Component-Resolvers/alibaba-profile-resolver.service';
+import { UsSectorResolverService } from './Services/Home-Component-Resolvers/us-sector-resolver.service';
+import { BitcoinProfileResolverService } from './Services/Crypto-Component-Resolvers/bitcoin-profile-resolver.service';
+import { LitecoinProfileResolverService } from './Services/Crypto-Component-Resolvers/litecoin-profile-resolver.service';
+import { BinanceCoinProfileResolverService } from './Services/Crypto-Component-Resolvers/binance-coin-profile-resolver.service';
+import { EthereumProfileResolverService } from './Services/Crypto-Component-Resolvers/ethereum-profile-resolver.service';
 import { IntradayResolverService } from './Services/Result-Component-Resolvers/intraday-resolver.service';
 import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
 import { StorageServiceModule } from 'ngx-webstorage-service';
@@ -62,8 +67,10 @@ import { SlimLoadingBarModule  } from 'ng2-slim-loading-bar';
     SlimLoadingBarModule.forRoot()  
   ],
   providers: [DailyAdjustedResolver,IntradayResolverService, NasdaqIntradayResolverService,
-  NasdaqIntradayResolverService,GoldProfileResolverService,DowProfileResolverService,
-  AlibabaProfileResolverService ],
+  NasdaqProfileResolverService,GoldProfileResolverService,DowProfileResolverService,
+  AlibabaProfileResolverService, UsSectorResolverService,
+  BitcoinProfileResolverService,LitecoinProfileResolverService,
+BinanceCoinProfileResolverService,EthereumProfileResolverService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

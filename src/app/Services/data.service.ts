@@ -66,19 +66,19 @@ export class DataService {
     return this.http.get<any>(`https://finnhub.io/api/v1/calendar/economic?token=bq3rdo7rh5rb0pdpg08g`);
   }
   getSectorPerformances():Observable<any>{
-    return this.http.get<any>(`https://www.alphavantage.co/query?function=SECTOR&apikey=UHKM95R37PUMWX1E`);
+    return this.http.get<any>(`https://www.alphavantage.co/query?function=SECTOR&apikey=UHKM95R37PUMWX1E`).pipe(delay(1000));
   }
   getNasdaqProfile():Observable<any>{
-    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=NDAQ&token=bq3rdo7rh5rb0pdpg08g`);
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=NDAQ&token=bq3rdo7rh5rb0pdpg08g`).pipe(delay(1000));
   }
   getGoldProfile():Observable<any>{
-    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=GOLD&token=bq3rdo7rh5rb0pdpg08g`);
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=GOLD&token=bq3rdo7rh5rb0pdpg08g`).pipe(delay(1000));
   }
   getDowProfile():Observable<any>{
-    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=DOW&token=bq3rdo7rh5rb0pdpg08g`);
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=DOW&token=bq3rdo7rh5rb0pdpg08g`).pipe(delay(1000));
   }
   getAlibabaProfile():Observable<any>{
-    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=BABA&token=bq3rdo7rh5rb0pdpg08g`);
+    return this.http.get<any>(`https://finnhub.io/api/v1/stock/profile2?symbol=BABA&token=bq3rdo7rh5rb0pdpg08g`).pipe(delay(1000));
   }
   getBtcIndex():Observable<any>{
     return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=BTC&apikey=UHKM95R37PUMWX1E`)

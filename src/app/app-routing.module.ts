@@ -22,13 +22,19 @@ import { NasdaqProfileResolverService } from './Services/Home-Component-Resolver
 import { GoldProfileResolverService } from './Services/Home-Component-Resolvers/gold-profile-resolver.service';
 import { DowProfileResolverService } from './Services/Home-Component-Resolvers/dow-profile-resolver.service';
 import { AlibabaProfileResolverService } from './Services/Home-Component-Resolvers/alibaba-profile-resolver.service';
+import { UsSectorResolverService } from './Services/Home-Component-Resolvers/us-sector-resolver.service';
+import { BitcoinProfileResolverService } from './Services/Crypto-Component-Resolvers/bitcoin-profile-resolver.service';
+import { LitecoinProfileResolverService } from './Services/Crypto-Component-Resolvers/litecoin-profile-resolver.service';
+import { BinanceCoinProfileResolverService } from './Services/Crypto-Component-Resolvers/binance-coin-profile-resolver.service';
+import { EthereumProfileResolverService } from './Services/Crypto-Component-Resolvers/ethereum-profile-resolver.service';
 const routes: Routes = [
   { path:'',component:HomeComponent,
    resolve:{
     NasdaqProfile:NasdaqProfileResolverService,
     GoldProfile:GoldProfileResolverService,
     DowProfile:DowProfileResolverService,
-    AlibabaProfile:AlibabaProfileResolverService
+    AlibabaProfile:AlibabaProfileResolverService,
+ //sector:UsSectorResolverService
    },
   children:[
     { path:'',component:NdaqComponent,
@@ -46,6 +52,12 @@ const routes: Routes = [
     { path:'Alibaba Group Holding Ltd/BABA',component:BabaComponent },
   ]},
   { path:'',component:CryptoComponent,
+    resolve:{
+      btcIndex:BitcoinProfileResolverService,
+      ltcIndex:LitecoinProfileResolverService,
+      ethIndex:EthereumProfileResolverService,
+      BusdIndex:BinanceCoinProfileResolverService
+    },
   children:[
    { path:'Crypto',component:BtcComponent },
    { path:'Crypto/Bitcoin/BTC',component:BtcComponent},

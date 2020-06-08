@@ -6,6 +6,8 @@ import { GoldProfileResolverService } from './Services/Home-Component-Resolvers/
 import { DowProfileResolverService } from './Services/Home-Component-Resolvers/dow-profile-resolver.service';
 import { AlibabaProfileResolverService } from './Services/Home-Component-Resolvers/alibaba-profile-resolver.service';
 import { UsSectorResolverService } from './Services/Home-Component-Resolvers/us-sector-resolver.service';
+import { NewsResolverService } from './Services/News-Component-Resolvers/news-resolver.service';
+import { ForexNewsResolverService } from './Services/Forex-Component-Resolvers/forex-news-resolver.service';
 import { BitcoinProfileResolverService } from './Services/Crypto-Component-Resolvers/bitcoin-profile-resolver.service';
 import { LitecoinProfileResolverService } from './Services/Crypto-Component-Resolvers/litecoin-profile-resolver.service';
 import { BinanceCoinProfileResolverService } from './Services/Crypto-Component-Resolvers/binance-coin-profile-resolver.service';
@@ -77,7 +79,8 @@ import { SlimLoadingBarModule  } from 'ng2-slim-loading-bar';
   BitcoinProfileResolverService,LitecoinProfileResolverService,
   BinanceCoinProfileResolverService,EthereumProfileResolverService,
   BitcoinDailyResolverService,LitecoinDailyResolverService,
-  BinanceCoinDailyResolverService,EthereumDailyResolverService, EconomicCalenderResolverService],
+  BinanceCoinDailyResolverService,EthereumDailyResolverService, EconomicCalenderResolverService,
+  NewsResolverService,ForexNewsResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

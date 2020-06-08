@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/Services/data.service';
 import { Chart } from 'chart.js';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-forex',
   templateUrl: './forex.component.html',
@@ -8,12 +8,11 @@ import { Chart } from 'chart.js';
 })
 export class ForexComponent implements OnInit {
   forexNews;
-  constructor(private Service:DataService) { }
+  constructor(private route:ActivatedRoute) {
+    this.forexNews = this.route.snapshot.data['forexNews'].splice(1,18)
+   }
 
   ngOnInit() {
-    this.Service.getForexNews().subscribe(articles =>{
-      this.forexNews = articles.splice(1,18)
-    })
 
   }
 

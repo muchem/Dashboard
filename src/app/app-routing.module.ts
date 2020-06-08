@@ -30,6 +30,8 @@ import { EthereumProfileResolverService } from './Services/Crypto-Component-Reso
 import { BitcoinDailyResolverService } from './Services/Crypto-Component-Resolvers/bitcoin-daily-resolver.service';
 import { LitecoinDailyResolverService } from './Services/Crypto-Component-Resolvers/litecoin-daily-resolver.service';
 import { BinanceCoinDailyResolverService } from './Services/Crypto-Component-Resolvers/binance-coin-daily-resolver.service';
+import { NewsResolverService } from './Services/News-Component-Resolvers/news-resolver.service';
+import { ForexNewsResolverService } from './Services/Forex-Component-Resolvers/forex-news-resolver.service';
 import {  EthereumDailyResolverService } from './Services/Crypto-Component-Resolvers/ethereum-daily-resolver.service';
 import { EconomicCalenderResolverService } from './Services/Economy-Component-Resolvers/economic-calender-resolver.service'
 const routes: Routes = [
@@ -90,8 +92,16 @@ const routes: Routes = [
     }
   },
  ]},
-  { path:'News',component:NewsComponent},
-  {path: 'forex',component:ForexComponent},
+  { path:'News',component:NewsComponent,
+  resolve:{
+    article:NewsResolverService
+  }  
+},
+  {path: 'forex',component:ForexComponent,
+  resolve:{
+    forexNews:ForexNewsResolverService
+  }
+},
   { path:'economy',component:EconomyComponent,
      resolve:{
       EconomicCalender:EconomicCalenderResolverService

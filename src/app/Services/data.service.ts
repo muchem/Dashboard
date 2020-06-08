@@ -57,13 +57,13 @@ export class DataService {
     return this.http.get<any>(`https://finnhub.io/api/v1/news?category=crypto&token=bq3rdo7rh5rb0pdpg08g`);
   }
   getForexNews():Observable<any>{
-    return this.http.get<any>(`https://finnhub.io/api/v1/news?category=forex&token=bq3rdo7rh5rb0pdpg08g`)
+    return this.http.get<any>(`https://finnhub.io/api/v1/news?category=forex&token=bq3rdo7rh5rb0pdpg08g`).pipe(delay(1000));
   }
   getGeneralNews():Observable<any>{
-    return this.http.get<any>(`https://finnhub.io/api/v1/news?category=general&token=bq3rdo7rh5rb0pdpg08g`);
+    return this.http.get<any>(`https://finnhub.io/api/v1/news?category=general&token=bq3rdo7rh5rb0pdpg08g`).pipe(delay(1000));
   }
   getEconomicCalender():Observable<any>{
-    return this.http.get<any>(`https://finnhub.io/api/v1/calendar/economic?token=bq3rdo7rh5rb0pdpg08g`).pipe(delay(1000));;
+    return this.http.get<any>(`https://finnhub.io/api/v1/calendar/economic?token=bq3rdo7rh5rb0pdpg08g`).pipe(delay(1000));
   }
   getSectorPerformances():Observable<any>{
     return this.http.get<any>(`https://www.alphavantage.co/query?function=SECTOR&apikey=UHKM95R37PUMWX1E`).pipe(delay(1000));

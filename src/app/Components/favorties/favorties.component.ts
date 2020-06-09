@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-favorties',
   templateUrl: './favorties.component.html',
@@ -9,7 +10,7 @@ export class FavortiesComponent implements OnInit {
 
   constructor() { }
   ngOnInit() {
- 
+  
   }
 
 }

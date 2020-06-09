@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NasdaqIntradayResolverService } from './Services/Home-Component-Resolvers/nasdaq-intraday-resolver.service';
+import { GoldIntradayResolverService } from './Services/Home-Component-Resolvers/gold-intraday-resolver.service';
+import { DowIntradayResolverService } from './/Services/Home-Component-Resolvers/dow-intraday-resolver.service';
+import { AlibabaIntradayResolverService } from './Services/Home-Component-Resolvers/alibaba-intraday-resolver.service';
 import { NasdaqProfileResolverService } from './Services/Home-Component-Resolvers/nasdaq-profile-resolver.service';
 import { GoldProfileResolverService } from './Services/Home-Component-Resolvers/gold-profile-resolver.service';
 import { DowProfileResolverService } from './Services/Home-Component-Resolvers/dow-profile-resolver.service';
@@ -80,7 +83,8 @@ import { SlimLoadingBarModule  } from 'ng2-slim-loading-bar';
   BinanceCoinProfileResolverService,EthereumProfileResolverService,
   BitcoinDailyResolverService,LitecoinDailyResolverService,
   BinanceCoinDailyResolverService,EthereumDailyResolverService, EconomicCalenderResolverService,
-  NewsResolverService,ForexNewsResolverService],
+  NewsResolverService,ForexNewsResolverService,GoldIntradayResolverService,DowIntradayResolverService,
+  AlibabaIntradayResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

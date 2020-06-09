@@ -1,32 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
 import { Chart } from 'chart.js';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-dow',
   templateUrl: './dow.component.html',
   styleUrls: ['./dow.component.scss']
 })
 export class DowComponent implements OnInit {
-
-  constructor(private Service:DataService) { }
   CompanySymbol:string;
-Intrachart = [];
-intradayTime = [];
-intradayOpen = [];
-intradayHigh = [];
-intradayLow = []
-intraday;
-
-earningCalender;
-quarterlyEspChart = [];
-espCalenderDates = [];
-espEstimates = [];
-espActuals = [];
-trends;
-trendCharts = [];
+  Intrachart = [];
+  intradayTime = [];
+  intradayOpen = [];
+  intradayHigh = [];
+  intradayLow = []
+  intraday;
+  
+  earningCalender;
+  quarterlyEspChart = [];
+  espCalenderDates = [];
+  espEstimates = [];
+  espActuals = [];
+  trends;
+  trendCharts = [];
+  constructor(private Service:DataService,private route:ActivatedRoute) {
+    this.intraday = Object.entries(this.route.snapshot.data['intraday']['Time Series (5min)']).splice(0,78).reverse();
+   }
   ngOnInit() {
-    this.Service.getIntradayData('DOW').subscribe(value =>{
-      this.intraday = Object.entries(value['Time Series (5min)']).splice(0,78).reverse();
       for(let i = 0; i<this.intraday.length; i++){
         this.intradayTime.push(this.intraday[i][0]);
         this.intradayOpen.push(this.intraday[i][1]["1. open"])
@@ -94,7 +94,6 @@ trendCharts = [];
           }
         }
       });
-    })
     this.Service.getRecommendationTrend('DOW').subscribe(trend =>{
       this.trends = trend[0];
       this.trendCharts = new Chart('trendChart',{

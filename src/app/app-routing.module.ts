@@ -18,6 +18,9 @@ import { BnbComponent } from './Components/bnb/bnb.component';
 import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
 import { IntradayResolverService } from './Services/Result-Component-Resolvers/intraday-resolver.service';
 import { NasdaqIntradayResolverService } from './Services/Home-Component-Resolvers/nasdaq-intraday-resolver.service';
+import { GoldIntradayResolverService } from './Services/Home-Component-Resolvers/gold-intraday-resolver.service';
+import { DowIntradayResolverService } from './/Services/Home-Component-Resolvers/dow-intraday-resolver.service';
+import { AlibabaIntradayResolverService } from './Services/Home-Component-Resolvers/alibaba-intraday-resolver.service';
 import { NasdaqProfileResolverService } from './Services/Home-Component-Resolvers/nasdaq-profile-resolver.service';
 import { GoldProfileResolverService } from './Services/Home-Component-Resolvers/gold-profile-resolver.service';
 import { DowProfileResolverService } from './Services/Home-Component-Resolvers/dow-profile-resolver.service';
@@ -54,9 +57,21 @@ const routes: Routes = [
         intraday:NasdaqIntradayResolverService
         }
     },
-    { path:'Barrick Gold Corp/ABX.TO',component:GoldComponent },
-    { path:'Dow Inc/DOW',component:DowComponent },
-    { path:'Alibaba Group Holding Ltd/BABA',component:BabaComponent },
+    { path:'Barrick Gold Corp/ABX.TO',component:GoldComponent,
+      resolve:{
+        intraday:GoldIntradayResolverService
+      }
+  },
+    { path:'Dow Inc/DOW',component:DowComponent,
+      resolve:{
+        intraday:DowIntradayResolverService
+      }
+  },
+    { path:'Alibaba Group Holding Ltd/BABA',component:BabaComponent,
+      resolve:{
+        intraday:AlibabaIntradayResolverService
+      }
+  },
   ]},
   { path:'',component:CryptoComponent,
     resolve:{

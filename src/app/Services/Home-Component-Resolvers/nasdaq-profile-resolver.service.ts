@@ -11,4 +11,5 @@ export class NasdaqProfileResolverService implements Resolve<any> {
   resolve():Observable<any[]>{
     return this.Service.getNasdaqProfile();
   }
+
 }

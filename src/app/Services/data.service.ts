@@ -92,4 +92,6 @@ export class DataService {
   getBusdIndex():Observable<any>{
     return this.http.get<any>(`https://www.alphavantage.co/query?function=CRYPTO_RATING&symbol=BNB&apikey=UHKM95R37PUMWX1E`).pipe(delay(1000));
   }
+
+ 
 }

@@ -136,22 +136,16 @@ trendCharts = [];
               fill: true
             }
           ]
-        },
-        options: {
-          title: {
-						display: true,
-						text: 'Analyst Recomendation'
-          }
         }
       })
     }) 
     
-    this.Service.getEarningsCalender('GOLD').subscribe(calender =>{
-      this.earningCalender = calender['earningsCalendar'];
+    this.Service.getEspSuprises('GOLD').subscribe(calender =>{
+      this.earningCalender = calender;
       for(let i = 0; i< this.earningCalender.length; i++){
-        this.espCalenderDates.push(this.earningCalender[i].date);
-        this.espActuals.push(this.earningCalender[i].epsActual);
-        this.espEstimates.push(this.earningCalender[i].epsEstimate);
+        this.espCalenderDates.push(this.earningCalender[i].period);
+        this.espActuals.push(this.earningCalender[i].actual);
+        this.espEstimates.push(this.earningCalender[i].estimate);
       }
       this.quarterlyEspChart = new Chart('espChart', {
         type:"bar",
@@ -175,10 +169,6 @@ trendCharts = [];
           ]
         },
         options: {
-          title: {
-						display: true,
-						text: 'Earnings Per Share'
-					},
           scales: {
             xAxes: [{
               display: true,

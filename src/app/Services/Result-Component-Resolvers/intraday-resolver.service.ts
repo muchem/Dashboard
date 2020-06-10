@@ -12,10 +12,6 @@ import { catchError } from 'rxjs/operators';
 export class IntradayResolverService implements Resolve<any>{
   constructor(private Service:DataService) { }
   resolve(route:ActivatedRouteSnapshot) :Observable<any[]>{
-    return this.Service.getIntradayData(route.paramMap.get('companySymbol')).pipe(
-      catchError((error) => {
-        console.log(error);
-        return empty();
-      }));
+    return this.Service.getIntradayData(route.paramMap.get('companySymbol'));
   }
 }

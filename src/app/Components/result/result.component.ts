@@ -184,6 +184,7 @@ export class ResultComponent implements OnInit{
         }
       })
     })
+
    this.Service.getRevenue(this.CompanySymbol).subscribe(calender =>{
     this.revenueEstimates = calender['earningsCalendar']
     for(let i = 0; i < this.revenueEstimates.length; i++){
@@ -191,8 +192,7 @@ export class ResultComponent implements OnInit{
       this.revenueEstimate.push(this.revenueEstimates[i].revenueEstimate);
       this.revenueActuals.push(this.revenueEstimates[i].revenueActual);
     }
-
-    this.priceTargetChart = new Chart('revenueChart',{
+    this.revenueEstimateChart = new Chart('revenueChart',{
       type:'line',
       data:{
         labels:this.revenueLabels.reverse(),
@@ -227,12 +227,12 @@ export class ResultComponent implements OnInit{
     })
   }) 
 
-    this.Service.getEarningsCalender(this.CompanySymbol).subscribe(calender =>{
-      this.earningCalender = calender['earningsCalendar'];
+    this.Service.getEspSuprises(this.CompanySymbol).subscribe(calender =>{
+      this.earningCalender = calender;
       for(let i = 0; i< this.earningCalender.length; i++){
-        this.espCalenderDates.push(this.earningCalender[i].date);
-        this.espActuals.push(this.earningCalender[i].epsActual);
-        this.espEstimates.push(this.earningCalender[i].epsEstimate);
+        this.espCalenderDates.push(this.earningCalender[i].period);
+        this.espActuals.push(this.earningCalender[i].actual);
+        this.espEstimates.push(this.earningCalender[i].estimate);
       }
       this.quarterlyEspChart = new Chart('espChart', {
         type:"bar",

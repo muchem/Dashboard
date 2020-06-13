@@ -34,11 +34,11 @@ export class HomeComponent implements OnInit {
     this.GoldProfile = this.route.snapshot.data['GoldProfile'];
     this.DowProfile = this.route.snapshot.data['DowProfile'];
     this.AlibabaProfile = this.route.snapshot.data['AlibabaProfile'];
-  //  this.sector = this.route.snapshot.data['sector'];
+    this.sector = this.route.snapshot.data['sector'];
   }
 
   ngOnInit() {
-    /*
+    
         this.sectorData = this.sector['Rank A: Real-Time Performance'];
         this.lastRefreshed = this.sector['Meta Data']['Last Refreshed'];
         this.Energy = this.sectorData['Energy'];
@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
         this.CommunicationService = this.sectorData['Communication Services'];
         this.IT = this.sectorData['Information Technology'];
         this.Healthcare = this.sectorData['Health Care']
-*/
+
      this.companyProfiles.push(this.NasdaqProfile);
       this.companyProfiles.push(this.GoldProfile)
       this.companyProfiles.push(this.DowProfile)

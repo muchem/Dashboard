@@ -46,7 +46,7 @@ const routes: Routes = [
     GoldProfile:GoldProfileResolverService,
     DowProfile:DowProfileResolverService,
     AlibabaProfile:AlibabaProfileResolverService,
- //sector:UsSectorResolverService
+    sector:UsSectorResolverService
    },
   children:[
     { path:'',component:NdaqComponent,

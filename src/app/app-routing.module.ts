@@ -17,6 +17,8 @@ import { EthComponent } from './Components/eth/eth.component';
 import { BnbComponent } from './Components/bnb/bnb.component';
 import { DailyAdjustedResolver } from './Services/Result-Component-Resolvers/dailyAdjusted-resolver';
 import { IntradayResolverService } from './Services/Result-Component-Resolvers/intraday-resolver.service';
+import {  EspResolverService  } from './Services/Result-Component-Resolvers/esp-resolver.service';
+import { CompanyNewsResolverService } from './Services/Result-Component-Resolvers/company-news-resolver.service';
 import { NasdaqIntradayResolverService } from './Services/Home-Component-Resolvers/nasdaq-intraday-resolver.service';
 import { GoldIntradayResolverService } from './Services/Home-Component-Resolvers/gold-intraday-resolver.service';
 import { DowIntradayResolverService } from './/Services/Home-Component-Resolvers/dow-intraday-resolver.service';
@@ -126,7 +128,9 @@ const routes: Routes = [
   { path:'result/:companySymbol/:companyName',component: ResultComponent,
     resolve:{
       intraday:IntradayResolverService,
-      dailyAdjusted:DailyAdjustedResolver
+      dailyAdjusted:DailyAdjustedResolver,
+      earningCalender:EspResolverService,
+      companyNews:CompanyNewsResolverService
     }
 },
 

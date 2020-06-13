@@ -42,6 +42,8 @@ export class ResultComponent implements OnInit{
   constructor(private route:ActivatedRoute,private Service:DataService) {
     this.intraday = Object.entries(this.route.snapshot.data['intraday']['Time Series (5min)']).splice(0,78).reverse();
     this.dailyAdjusted = Object.entries(this.route.snapshot.data['dailyAdjusted']['Time Series (Daily)']).splice(0,4);
+    this.earningCalender = this.route.snapshot.data['earningCalender'];
+    this.companyNews =  this.route.snapshot.data['companyNews'].splice(0,6);
   }
   ngOnInit() {
  this.route.paramMap.subscribe(params => {
@@ -227,8 +229,6 @@ export class ResultComponent implements OnInit{
     })
   }) 
 
-    this.Service.getEspSuprises(this.CompanySymbol).subscribe(calender =>{
-      this.earningCalender = calender;
       for(let i = 0; i< this.earningCalender.length; i++){
         this.espCalenderDates.push(this.earningCalender[i].period);
         this.espActuals.push(this.earningCalender[i].actual);
@@ -266,10 +266,6 @@ export class ResultComponent implements OnInit{
             }]
           }
         }
-      })
-    })
-    this.Service.getCompanyNews(this.CompanySymbol).subscribe(article =>{
-      this.companyNews = article.splice(0,6);
     })
 
   }
